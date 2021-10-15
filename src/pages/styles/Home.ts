@@ -11,7 +11,7 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
         borderRadius: "2em",
         display: "flex",
         flexDirection: "column",
-        padding: "2em",
+        padding: "2em 6em",
         margin: "4em 0",
     },
 };
