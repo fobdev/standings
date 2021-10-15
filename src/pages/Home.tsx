@@ -61,16 +61,19 @@ export const Home: React.FC<Props> = () => {
                         {standingTasks?.data.abbreviation}
                     </span>
                 </DialogTitle>
-                <DialogContent sx={{ display: "flex", flexDirection: "column", rowGap: "1em" }}>
+                <DialogContent sx={{ display: "flex", flexDirection: "column", rowGap: ".3em" }}>
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
                     {standingTasks?.data.standings.map((element, index) => {
                         return (
-                            <StandingListItem
-                                key={index}
-                                note={element.note}
-                                team={element.team}
-                                stats={element.stats}
-                            />
+                            <Box>
+                                <StandingListItem
+                                    index={index}
+                                    key={index}
+                                    note={element.note}
+                                    team={element.team}
+                                    stats={element.stats}
+                                />
+                            </Box>
                         );
                     })}
                 </DialogContent>
