@@ -15,8 +15,8 @@ export interface StandingsData {
 
 export interface StandingsResponse {
     team: StandingsTeam;
-    note: StandingsNote;
-    stats: StandingsStats[];
+    note: StandingsTeamNote;
+    stats: StandingsTeamStats[];
 }
 
 export interface StandingsTeam {
@@ -40,13 +40,13 @@ export interface StandingsTeamLogos {
     lastUpdate: string;
 }
 
-export interface StandingsNote {
+export interface StandingsTeamNote {
     color: string;
     description: string;
     rank: number;
 }
 
-export interface StandingsStats {
+export interface StandingsTeamStats {
     type: string;
     name: string;
     displayName: string;
