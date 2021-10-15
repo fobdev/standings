@@ -3,12 +3,12 @@ import { SxProps, Theme } from "@mui/system";
 export const mainStandingListItemBoxStyling: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
-    border: "1px solid orange",
+    width: "50em",
     columnGap: "1em",
     ".main-paper": {
         display: "flex",
-        // border: "1px solid red",
         columnGap: "1em",
+        padding: "1em",
         ".team-name": {
             alignSelf: "center",
         },
