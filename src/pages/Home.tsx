@@ -1,4 +1,16 @@
-import { Dialog, DialogContent, DialogTitle, Paper, Typography } from "@mui/material";
+import {
+    Dialog,
+    DialogContent,
+    DialogTitle,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { mainHomeBoxStyling } from "./styles/Home";
 import { useEffect, useState } from "react";
@@ -63,19 +75,32 @@ export const Home: React.FC<Props> = () => {
                 </DialogTitle>
                 <DialogContent sx={{ display: "flex", flexDirection: "column", rowGap: ".3em" }}>
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
-                    {standingTasks?.data.standings.map((element, index) => {
-                        return (
-                            <Box>
-                                <StandingListItem
-                                    index={index}
-                                    key={index}
-                                    note={element.note}
-                                    team={element.team}
-                                    stats={element.stats}
-                                />
-                            </Box>
-                        );
-                    })}
+                    <TableContainer>
+                        <Table stickyHeader={true}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Time</TableCell>
+                                    <TableCell align="right">Vitórias</TableCell>
+                                    <TableCell align="right">Empates</TableCell>
+                                    <TableCell align="right">Derrotas</TableCell>
+                                    <TableCell align="right">Jogos</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {standingTasks?.data.standings.map((element, index) => {
+                                    return (
+                                        <StandingListItem
+                                            index={index}
+                                            key={index}
+                                            note={element.note}
+                                            team={element.team}
+                                            stats={element.stats}
+                                        />
+                                    );
+                                })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </DialogContent>
             </Dialog>
         </Box>
