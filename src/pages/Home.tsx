@@ -47,7 +47,20 @@ export const Home: React.FC<Props> = () => {
                 <Typography>{standingTasks?.data.abbreviation}</Typography>
                 <Typography>{standingTasks?.data.seasons}</Typography>
                 {standingTasks?.data.standings.map((element, index) => {
-                    return console.log(element);
+                    return (
+                        <StandingListItem
+                            key={index}
+                            displayName={element.team.displayName}
+                            id={element.team.id}
+                            isActive={element.team.isActive}
+                            location={element.team.location}
+                            logos={element.team.logos}
+                            name={element.team.name}
+                            shortDisplayName={element.team.shortDisplayName}
+                            uid={element.team.uid}
+                            abbreviation={element.team.abbreviation}
+                        />
+                    );
                 })}
                 <Typography></Typography>
             </Dialog>
