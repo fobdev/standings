@@ -67,15 +67,9 @@ export const Home: React.FC<Props> = () => {
                         return (
                             <StandingListItem
                                 key={index}
-                                displayName={element.team.displayName}
-                                id={element.team.id}
-                                isActive={element.team.isActive}
-                                location={element.team.location}
-                                logos={element.team.logos}
-                                name={element.team.name}
-                                shortDisplayName={element.team.shortDisplayName}
-                                uid={element.team.uid}
-                                abbreviation={element.team.abbreviation}
+                                note={element.note}
+                                team={element.team}
+                                stats={element.stats}
                             />
                         );
                     })}

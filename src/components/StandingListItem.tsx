@@ -1,25 +1,15 @@
 import { Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { StandingsTeam } from "../interfaces";
+import { StandingsResponse } from "../interfaces";
 import { mainStandingListItemBoxStyling } from "./styles";
 import noimage from "../images/noimage.png";
 
-export const StandingListItem: React.FC<StandingsTeam> = ({
-    abbreviation,
-    id,
-    displayName,
-    isActive,
-    location,
-    logos,
-    name,
-    shortDisplayName,
-    uid,
-}) => {
+export const StandingListItem: React.FC<StandingsResponse> = ({ note, stats, team }) => {
     /**
      * A logica abaixo foi implementada para suprir alguns times que não tem imagem.
      */
-    let teamImage = logos ? logos[0].href : noimage;
-    let imageAlt = logos ? logos[0].alt : "";
+    let teamImage = team.logos ? team.logos[0].href : noimage;
+    let imageAlt = team.logos ? team.logos[0].alt : "";
 
     return (
         <Box sx={mainStandingListItemBoxStyling}>
@@ -28,10 +18,10 @@ export const StandingListItem: React.FC<StandingsTeam> = ({
                 <Box>
                     <Box display="flex">
                         <Typography variant="h6" fontWeight="300" className="team-name">
-                            {displayName}
+                            {team.displayName}
                         </Typography>
                     </Box>
-                    <Typography>{abbreviation}</Typography>
+                    <Typography>{team.abbreviation}</Typography>
                 </Box>
             </Paper>
         </Box>
