@@ -4,10 +4,11 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
-    maxHeight: "100%",
     fontWeight: "bold",
 
     ".main-paper": {
+        boxShadow: "inset 0 0 10px #bbb",
+        borderRadius: "2em",
         display: "flex",
         flexDirection: "column",
         padding: "2em",
