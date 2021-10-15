@@ -28,10 +28,7 @@ export const StandingListItem: React.FC<StandingsTeam> = ({
                 <Box>
                     <Box display="flex">
                         <Typography variant="h6" fontWeight="300" className="team-name">
-                            {shortDisplayName}
-                        </Typography>
-                        <Typography fontWeight="200" alignSelf="end">
-                            {location}
+                            {displayName}
                         </Typography>
                     </Box>
                     <Typography>{abbreviation}</Typography>
