@@ -4,16 +4,28 @@ export const mainStandingListItemBoxStyling: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
     width: "50em",
-    columnGap: "1em",
     ".main-paper": {
         display: "flex",
         columnGap: "1em",
-        padding: "1em",
+        padding: ".2em",
+
         ".team-name": {
             alignSelf: "center",
         },
+        ".team-name-abbrev": {
+            alignSelf: "center",
+            marginLeft: ".4em",
+        },
+
         img: {
-            width: "4em",
+            width: "2em",
+            height: "2em",
+        },
+
+        cursor: "pointer",
+        userSelect: "none",
+        "&:hover": {
+            background: "#eee",
         },
     },
 };
