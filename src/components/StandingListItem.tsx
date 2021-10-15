@@ -2,6 +2,7 @@ import { Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { StandingsTeam } from "../interfaces";
 import { mainStandingListItemBoxStyling } from "./styles";
+import noimage from "../images/noimage.png";
 
 export const StandingListItem: React.FC<StandingsTeam> = ({
     abbreviation,
@@ -14,11 +15,16 @@ export const StandingListItem: React.FC<StandingsTeam> = ({
     shortDisplayName,
     uid,
 }) => {
+    /**
+     * A logica abaixo foi implementada para suprir alguns times que não tem imagem.
+     */
+    let teamImage = logos ? logos[0].href : noimage;
+    let imageAlt = logos ? logos[0].alt : "";
+
     return (
         <Box sx={mainStandingListItemBoxStyling}>
             <Paper className="main-paper" elevation={5}>
-                {/* A linha abaixo é uma forma de passar por alguns times que não contém logo na API */}
-                {logos ? <img src={logos[0].href} alt={logos[0].alt} /> : null}
+                <img src={teamImage} alt={imageAlt} />
                 <Box>
                     <Box display="flex">
                         <Typography variant="h6" fontWeight="300" className="team-name">
