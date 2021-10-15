@@ -27,6 +27,7 @@ export const Home: React.FC<Props> = () => {
                     if (index < 10)
                         return (
                             <Item
+                            key={index}
                                 onClick={() => {
                                     setStandingKey(element.id);
                                     setDialogOpen(true);
