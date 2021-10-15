@@ -55,7 +55,8 @@ export const Home: React.FC<Props> = () => {
             </Paper>
             <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose}>
                 <DialogTitle>
-                    Times da liga {standingTasks?.data.name}{" "}
+                    Times da liga{" "}
+                    <span style={{ fontSize: "1.4em" }}>{standingTasks?.data.name}</span>{" "}
                     <span style={{ fontSize: ".8em", fontWeight: 300, color: "#bbb" }}>
                         {standingTasks?.data.abbreviation}
                     </span>
