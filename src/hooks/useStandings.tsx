@@ -3,15 +3,26 @@ import { Standings } from "../interfaces";
 import { StandingsService } from "../services/StandingsService";
 
 export const useStanding = () => {
+    /**
+     * standingTasks guardará o conteúdo do ENDPOINT correspondente da API
+     * a call de useStanding() deve ser executada dentro de um useEffect() hook
+     * por conta de ser uma request assincrona.
+     */
     const [standingTasks, setStandingTasks] = useState<Standings>();
 
-    // useCallback para mudar apenas quando a depenência é mudada
+    /**
+     * useCallback para mudar apenas quando a depenência é mudada
+     */
     const getStanding = useCallback(async () => {
         const { status, data } = await StandingsService.getAll();
         if (status !== 200) throw new Error();
         setStandingTasks(data);
     }, []);
 
+    /**
+     * a função para o fetch e o respectivo objeto serão retornados
+     * assim possibilitando a utilização dos dados pela constante standingTasks.
+     */
     return {
         standingTasks,
         getStanding,
