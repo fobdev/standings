@@ -23,7 +23,6 @@ export const Item: React.FC<Props> = ({ id, logos, abbr, name, slug, onClick }) 
                     </Typography>
                 </Box>
             </Paper>
-            {/* <Typography variant="subtitle2">slug: {slug}</Typography> */}
         </ButtonBase>
     );
 };
