@@ -43,6 +43,7 @@ export const Home: React.FC<Props> = () => {
                 {leaguesTasks?.data.map((element, index) => {
                     return (
                         <Item
+                            index={index}
                             key={index}
                             onClick={() => {
                                 setStandingKey(element.id);
