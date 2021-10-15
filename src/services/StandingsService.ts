@@ -4,7 +4,7 @@ import { Api } from "../providers";
 /**
  * GET request da API no ENDPOINT /leagues/{id}}/standings sendo utilizado no getAll
  */
-const getAll = () => Api.get<Standings>("/leagues/arg.1/standings");
+const getAll = (id: string) => Api.get<Standings>(`/leagues/${id}/standings`);
 
 export const StandingsService = {
     getAll,
