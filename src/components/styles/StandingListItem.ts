@@ -1,31 +1,22 @@
 import { SxProps, Theme } from "@mui/system";
 
 export const mainStandingListItemBoxStyling: SxProps<Theme> = {
-    display: "flex",
-    flexDirection: "column",
-    width: "50em",
-    ".main-paper": {
+    ".left-side": {
         display: "flex",
+        minWidth: "20vw",
+        alignContent: "center",
         columnGap: "1em",
-        padding: ".2em",
-
-        ".team-name": {
-            alignSelf: "center",
+        ".team-title": {
+            ".team-name": {
+                alignSelf: "center",
+            },
+            ".team-abbr": {
+                fontWeight: "500",
+            },
         },
-        ".team-name-abbrev": {
-            alignSelf: "center",
-            marginLeft: ".4em",
-        },
-
         img: {
-            width: "2em",
-            height: "2em",
-        },
-
-        cursor: "pointer",
-        userSelect: "none",
-        "&:hover": {
-            background: "#eee",
+            width: "3em",
+            height: "3em",
         },
     },
 };
