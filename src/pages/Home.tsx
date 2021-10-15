@@ -1,11 +1,4 @@
-import {
-    Dialog,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    Paper,
-    Typography,
-} from "@mui/material";
+import { Dialog, DialogContent, DialogTitle, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { mainHomeBoxStyling } from "./styles/Home";
 import { useEffect, useState } from "react";
@@ -33,9 +26,11 @@ export const Home: React.FC<Props> = () => {
 
     return (
         <Box sx={mainHomeBoxStyling}>
-            <Paper className="main-paper" elevation={5}>
-                <Typography variant="h3">Classificação de Ligas</Typography>
-                <Typography variant="h6">
+            <Paper className="main-paper">
+                <Typography variant="h3" fontWeight="200" textAlign="center">
+                    Classificação de Ligas
+                </Typography>
+                <Typography variant="h6" fontWeight="400" textAlign="center">
                     Selecione uma liga para verificar a classificação de seus times.
                 </Typography>
 
