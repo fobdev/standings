@@ -31,15 +31,6 @@ export interface StandingsTeam {
     logos: StandingsTeamLogos[];
 }
 
-export interface StandingsTeamLogos {
-    href: string;
-    width: number;
-    height: number;
-    alt: string;
-    rel: string[];
-    lastUpdate: string;
-}
-
 export interface StandingsTeamNote {
     color: string;
     description: string;
@@ -54,4 +45,13 @@ export interface StandingsTeamStats {
     description: string;
     value: number;
     displayValue: string;
+}
+
+export interface StandingsTeamLogos {
+    href: string;
+    width: number;
+    height: number;
+    alt: string;
+    rel: string[];
+    lastUpdate: string;
 }
