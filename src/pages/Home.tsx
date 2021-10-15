@@ -14,6 +14,10 @@ export const Home: React.FC<Props> = () => {
     const { standingTasks, getStanding } = useStanding(standingKey);
     const [dialogOpen, setDialogOpen] = useState(false);
 
+    const handleClose = () => {
+        setDialogOpen(false);
+    };
+    
     useEffect(() => {
         console.log(standingKey);
         getAllLeagues();
@@ -40,11 +44,7 @@ export const Home: React.FC<Props> = () => {
                     );
                 })}
             </Paper>
-            <Dialog open={dialogOpen}>
-                <DialogTitle>Test</DialogTitle>
-                <Typography>{standingTasks?.data.name}</Typography>
-                <Typography>{standingTasks?.data.abbreviation}</Typography>
-                <Typography>{standingTasks?.data.seasons}</Typography>
+            <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose}>
                 {standingTasks?.data.standings.map((element, index) => {
                     return (
                         <StandingListItem
