@@ -22,9 +22,10 @@ interface Props {}
 
 export const Home: React.FC<Props> = () => {
     const [standingKey, setStandingKey] = useState("");
+    const [dialogOpen, setDialogOpen] = useState(false);
     const { leaguesTasks, getAllLeagues } = useLeagues();
     const { standingTasks, getStanding } = useStanding(standingKey);
-    const [dialogOpen, setDialogOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleClose = () => {
         setDialogOpen(false);
@@ -33,7 +34,9 @@ export const Home: React.FC<Props> = () => {
     useEffect(() => {
         console.log(standingKey);
         getAllLeagues();
-        getStanding(standingKey);
+        getStanding(standingKey).then(() => {
+            setLoading(false);
+        });
     }, [getAllLeagues, getStanding, standingKey]);
 
     return (
@@ -73,7 +76,7 @@ export const Home: React.FC<Props> = () => {
                         {standingTasks?.data.abbreviation}
                     </span>
                 </DialogTitle>
-                <DialogContent sx={{ display: "flex", flexDirection: "column", rowGap: ".3em" }}>
+                <DialogContent sx={{ display: "flex", flexDirection: "column" }}>
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
                     <TableContainer>
                         <Table stickyHeader={true} size="small">
@@ -87,6 +90,24 @@ export const Home: React.FC<Props> = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
+                                {/* Animação de loading enquanto os fetchs estão sendo realizados */}
+                                {loading ? (
+                                    <Box
+                                        sx={{
+                                            border: "8px solid #f3f3f3",
+                                            borderRadius: "50%",
+                                            borderTop: "8px solid #3498db",
+                                            width: "30px",
+                                            height: "30px",
+                                            animation: "spin 2s linear infinite",
+
+                                            "@keyframes spin": {
+                                                "0%": { transform: "rotate(0deg)" },
+                                                "100%": { transform: "rotate(360deg)" },
+                                            },
+                                        }}
+                                    />
+                                ) : null}
                                 {standingTasks?.data.standings.map((element, index) => {
                                     return (
                                         <StandingListItem
