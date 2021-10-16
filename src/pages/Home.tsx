@@ -58,6 +58,7 @@ export const Home: React.FC<Props> = () => {
                             onClick={() => {
                                 setStandingKey(element.id);
                                 setDialogOpen(true);
+                                setLoading(true);
                             }}
                             id={element.id}
                             abbr={element.abbr}
@@ -109,7 +110,7 @@ export const Home: React.FC<Props> = () => {
                                     />
                                 ) : null}
                                 {standingTasks?.data.standings.map((element, index) => {
-                                    return (
+                                    return loading ? null : (
                                         <StandingListItem
                                             index={index}
                                             key={index}
