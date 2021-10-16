@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import { StandingsResponse } from "../interfaces";
 import { mainStandingListItemBoxStyling } from "./styles";
 import noimage from "../images/noimage.png";
-import { useState } from "react";
 
 interface componentProps {
     index: number;
@@ -12,7 +11,13 @@ interface componentProps {
 
 type StandingsProps = componentProps & StandingsResponse;
 
-export const StandingListItem: React.FC<StandingsProps> = ({ note, stats, team, index }) => {
+export const StandingListItem: React.FC<StandingsProps> = ({
+    note,
+    stats,
+    team,
+    index,
+    iterationArray,
+}) => {
     /**
      * A logica abaixo foi implementada para suprir alguns times que não tem imagem.
      */
@@ -25,9 +30,20 @@ export const StandingListItem: React.FC<StandingsProps> = ({ note, stats, team, 
     let gamesPlayedCount = stats.find((current) => current.name === "gamesPlayed");
 
     return (
-        <Grow in={true} timeout={{ enter: index * 200 }}>
+        <Grow in={true} timeout={{ enter: index * 100 }}>
             <TableRow key={index} sx={mainStandingListItemBoxStyling}>
                 <TableCell className="left-side">
+                    {/* Todos os elementos com índice maior que 4 ganham a cor de classificação */}
+                    {index + 1 <= 4 ? <Box className="qualifiers" /> : null}
+
+                    {/* Todos os elementos 4 índices menores que o tamanho do array da call, recebem a cor de rebaixamento. */}
+                    {index >= iterationArray.length - 4 ? <Box className="eliminations" /> : null}
+
+                    {/* div de alinhamento, visto que os dois div acima deixariam o layout desalinhado */}
+                    {index + 1 <= iterationArray.length - 4 && index >= 4 ? (
+                        <Box className="aligner" />
+                    ) : null}
+
                     <Typography className="position">
                         {index + 1 <= 9 ? `  ${index + 1}` : index + 1}
                     </Typography>
