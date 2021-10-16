@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import { Standings } from "../interfaces";
-import { StandingsService } from "../services/StandingsService";
+import { StandingsService } from "../services";
 
-export const useStanding = (id: string) => {
+export const useStanding = (id: string, season: number) => {
     /**
      * standingTasks guardará o conteúdo do ENDPOINT correspondente da API
      * a call de useStanding() deve ser executada dentro de um useEffect() hook
@@ -13,8 +13,8 @@ export const useStanding = (id: string) => {
     /**
      * useCallback para mudar apenas quando a depenência é mudada
      */
-    const getStanding = useCallback(async (id) => {
-        const { status, data } = await StandingsService.getAll(id);
+    const getStanding = useCallback(async (id, season) => {
+        const { status, data } = await StandingsService.getAll(id, season);
         if (status !== 200) throw new Error();
 
         setStandingTasks(data);
