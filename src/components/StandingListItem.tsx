@@ -1,4 +1,4 @@
-import { Grow, Paper, TableCell, TableRow, Typography } from "@mui/material";
+import { Grow, TableCell, TableRow, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { StandingsResponse } from "../interfaces";
 import { mainStandingListItemBoxStyling } from "./styles";
@@ -19,13 +19,16 @@ export const StandingListItem: React.FC<StandingsProps> = ({
     iterationArray,
 }) => {
     /**
-     * A logica abaixo foi implementada para suprir alguns times que não tem imagem.
+     * A logica abaixo foi implementada para suprir times que não tem imagem.
      */
     let teamImage = team.logos ? team.logos[0].href : noimage;
     let imageAlt = team.logos ? team.logos[0].alt : "";
 
+    /**
+     * variáveis com retorno numérico de dados que estão armazenadas em um array de objects
+     * dentro da API estao sendo resgatadas aqui.
+     */
     let winCount = stats.find((current) => current.name === "wins");
-    let lossCount = stats.find((current) => current.name === "losses");
     let gamesPlayedCount = stats.find((current) => current.name === "gamesPlayed");
     let pointsCount = stats.find((current) => current.name === "points");
     let pointsForCount = stats.find((current) => current.name === "pointsFor");
@@ -51,21 +54,47 @@ export const StandingListItem: React.FC<StandingsProps> = ({
                     </Typography>
                     <img src={teamImage} alt={imageAlt} />
                     <Box className="team-title">
-                        <Typography className="team-name">{team.displayName}</Typography>
+                        {/* 
+                            quando o media query de 560px for acionado:
+                            - abbreviation será removido da tela
+                            - displayName será removido da tela.
+                            - shortDisplayName será adicionado a tela.
+                        */}
                         <Typography className="team-abbr">{team.abbreviation}</Typography>
+                        <Typography className="team-name">{team.displayName}</Typography>
+                        <Typography className="team-shortname">{team.shortDisplayName}</Typography>
                     </Box>
                 </TableCell>
-                <TableCell align="right">{pointsCount?.displayValue}</TableCell>
-                <TableCell align="right">{gamesPlayedCount?.displayValue}</TableCell>
-                <TableCell align="right">{winCount?.displayValue}</TableCell>
-                <TableCell align="right">{pointDifferentialCount?.displayValue}</TableCell>
-                <TableCell align="right">{pointsForCount?.displayValue}</TableCell>
+                {/* 
+                    quando o media query de 700px for acionado:
+                    - sg-count será removido da tela.
+                    - gp-count será removido da tela.
+                */}
+                <TableCell align="right" className="points-count">
+                    {pointsCount?.displayValue}
+                </TableCell>
+                <TableCell align="right" className="gamesplayed-count">
+                    {gamesPlayedCount?.displayValue}
+                </TableCell>
+                <TableCell align="right" className="win-count">
+                    {winCount?.displayValue}
+                </TableCell>
+                <TableCell align="right" className="sg-count">
+                    {pointDifferentialCount?.displayValue}
+                </TableCell>
+                <TableCell align="right" className="gp-count">
+                    {pointsForCount?.displayValue}
+                </TableCell>
 
-                {/* <TableCell align="right">P</TableCell>
-                <TableCell align="right">J</TableCell>
-                <TableCell align="right">V</TableCell>
-                <TableCell align="right">SG</TableCell>
-                <TableCell align="right">F</TableCell> */}
+                {/* 
+                
+                padrão
+
+                <TableCell>P</TableCell>
+                <TableCell>J</TableCell>
+                <TableCell>V</TableCell>
+                <TableCell>SG</TableCell>
+                <TableCell>F</TableCell> */}
             </TableRow>
         </Grow>
     );
