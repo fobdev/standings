@@ -16,6 +16,24 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
 };
 
 export const mainDialogStyling: SxProps<Theme> = {
+    ".dialog-window-title": {
+        ".title-box": {
+            ".league-bigname": {
+                fontSize: "1.4em",
+            },
+            ".league-title-abbr": {
+                fontSize: ".8em",
+                fontWeight: 300,
+                color: "#bbb",
+            },
+
+            "@media (max-width: 700px)": {
+                ".league-name-prefix": {
+                    display: "none",
+                },
+            },
+        },
+    },
     ".dialog-content": {
         ".teams-table": {
             "@media (max-width: 700px)": {

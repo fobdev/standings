@@ -94,10 +94,10 @@ export const Home: React.FC<Props> = () => {
                     {loading ? (
                         "carregando..."
                     ) : (
-                        <Box>
-                            Times da liga{" "}
-                            <span style={{ fontSize: "1.4em" }}>{standingTasks?.data.name}</span>{" "}
-                            <span style={{ fontSize: ".8em", fontWeight: 300, color: "#bbb" }}>
+                        <Box className="title-box">
+                            <span className="league-name-prefix">Times da liga </span>
+                            <span className="league-bigname">{standingTasks?.data.name}</span>{" "}
+                            <span className="league-title-abbr">
                                 {standingTasks?.data.abbreviation}
                             </span>
                         </Box>
