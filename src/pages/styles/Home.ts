@@ -81,7 +81,6 @@ export const mainDialogStyling: SxProps<Theme> = {
             ".table-footer": {
                 display: "flex",
                 padding: "1em 1em 0 1em",
-                columnGap: "2em",
                 span: {
                     fontWeight: "bold",
                 },
