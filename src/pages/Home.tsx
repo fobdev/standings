@@ -76,7 +76,7 @@ export const Home: React.FC<Props> = () => {
                 <DialogContent sx={{ display: "flex", flexDirection: "column", rowGap: ".3em" }}>
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
                     <TableContainer>
-                        <Table stickyHeader={true}>
+                        <Table stickyHeader={true} size="small">
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Time</TableCell>
