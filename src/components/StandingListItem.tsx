@@ -40,10 +40,14 @@ export const StandingListItem: React.FC<StandingsProps> = ({
             <TableRow key={index} sx={mainStandingListItemBoxStyling}>
                 <TableCell className="left-side">
                     {/* Todos os elementos com índice maior que 4 ganham a cor de classificação */}
-                    {index + 1 <= 4 ? <Box className="qualifiers" /> : null}
+                    {index + 1 <= 4 && iterationArray.length >= 8 ? (
+                        <Box className="qualifiers" />
+                    ) : null}
 
                     {/* Todos os elementos 4 índices menores que o tamanho do array da call, recebem a cor de rebaixamento. */}
-                    {index >= iterationArray.length - 4 ? <Box className="eliminations" /> : null}
+                    {index >= iterationArray.length - 4 && iterationArray.length >= 8 ? (
+                        <Box className="eliminations" />
+                    ) : null}
 
                     {/* div de alinhamento, visto que os dois div acima deixariam o layout desalinhado */}
                     {index + 1 <= iterationArray.length - 4 && index >= 4 ? (
