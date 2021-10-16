@@ -142,63 +142,25 @@ export const Home: React.FC<Props> = () => {
                                     );
                                 })}
                             </TableBody>
-                            <TableFooter>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        padding: "1em 1em 0 1em",
-                                        columnGap: "2em",
-                                    }}
-                                >
-                                    <Box>
-                                        <Typography>P - Pontos</Typography>
-                                        <Typography>J - Jogos</Typography>
+                            <TableFooter className="table-footer">
+                                <Box>
+                                    <Typography>P - Pontos</Typography>
+                                    <Typography>J - Jogos</Typography>
+                                </Box>
+                                <Box>
+                                    <Typography>V - Vitórias</Typography>
+                                    <Typography>SG - Saldo de Gols</Typography>
+                                </Box>
+                                <Box className="colorinfo-box">
+                                    <Box className="classification-box">
+                                        <Box className="classification-color" />
+                                        <Typography className="classification">
+                                            Classificação
+                                        </Typography>
                                     </Box>
-                                    <Box>
-                                        <Typography>V - Vitórias</Typography>
-                                        <Typography>SG - Saldo de Gols</Typography>
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            display: "inherit",
-                                            alignItems: "left",
-                                            flexDirection: "column",
-                                            ".relegation-box, .classification-box": {
-                                                display: "flex",
-                                                columnGap: ".5em",
-
-                                                ".relegation-color, .classification-color": {
-                                                    alignSelf: "center",
-                                                },
-                                            },
-                                        }}
-                                    >
-                                        <Box className="classification-box">
-                                            <Box
-                                                className="classification-color"
-                                                sx={{
-                                                    background: "green",
-                                                    width: "1em",
-                                                    height: "1em",
-                                                }}
-                                            />
-                                            <Typography className="classification">
-                                                Classificação
-                                            </Typography>
-                                        </Box>
-                                        <Box className="relegation-box">
-                                            <Box
-                                                className="relegation-color"
-                                                sx={{
-                                                    background: "red",
-                                                    width: "1em",
-                                                    height: "1em",
-                                                }}
-                                            />
-                                            <Typography className="relegation">
-                                                Rebaixamento
-                                            </Typography>
-                                        </Box>
+                                    <Box className="relegation-box">
+                                        <Box className="relegation-color" />
+                                        <Typography className="relegation">Rebaixamento</Typography>
                                     </Box>
                                 </Box>
                             </TableFooter>

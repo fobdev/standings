@@ -78,6 +78,33 @@ export const mainDialogStyling: SxProps<Theme> = {
                     },
                 },
             },
+            ".table-footer": {
+                display: "flex",
+                padding: "1em 1em 0 1em",
+                columnGap: "2em",
+
+                ".colorinfo-box": {
+                    display: "inherit",
+                    alignItems: "left",
+                    flexDirection: "column",
+                    ".relegation-box, .classification-box": {
+                        display: "flex",
+                        alignItems: "center",
+                        columnGap: ".5em",
+
+                        ".classification-color": {
+                            background: "green",
+                            width: "1em",
+                            height: "1em",
+                        },
+                        ".relegation-color": {
+                            background: "red",
+                            width: "1em",
+                            height: "1em",
+                        },
+                    },
+                },
+            },
         },
     },
 };
