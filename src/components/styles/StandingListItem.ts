@@ -29,9 +29,13 @@ export const mainStandingListItemBoxStyling: SxProps<Theme> = {
             columnGap: ".5em",
             ".team-name": {
                 alignSelf: "center",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                width: "10em",
             },
             ".team-abbr": {
-                fontWeight: "500",
+                fontWeight: "bold",
             },
         },
         img: {
