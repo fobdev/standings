@@ -12,7 +12,7 @@ interface componentProps {
 type Props = componentProps & LeaguesData;
 export const LeagueItem: React.FC<Props> = ({ id, logos, abbr, name, slug, onClick, index }) => {
     return (
-        <Grow in={true} timeout={{ enter: index * 100 }}>
+        <Grow in={true} timeout={{ enter: (index % 5) * 500 }}>
             <Button sx={mainButtonStyling} onClick={onClick} disableRipple>
                 <img src={logos.light} alt="League Logo" />
                 <Box className="title-box">
