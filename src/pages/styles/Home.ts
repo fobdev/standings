@@ -35,75 +35,73 @@ export const mainDialogStyling: SxProps<Theme> = {
         },
     },
     ".dialog-content": {
-        ".table-container": {
-            ".teams-table": {
-                ".table-body": {
-                    ".loading-animation": {
-                        border: "8px solid #f3f3f3",
-                        borderRadius: "50%",
-                        borderTop: "8px solid #bbe",
-                        margin: "1em",
-                        width: "30px",
-                        height: "30px",
-                        animation: "spin 2s linear infinite",
+        ".teams-table": {
+            ".table-body": {
+                ".loading-animation": {
+                    border: "8px solid #f3f3f3",
+                    borderRadius: "50%",
+                    borderTop: "8px solid #bbe",
+                    margin: "1em",
+                    width: "30px",
+                    height: "30px",
+                    animation: "spin 2s linear infinite",
 
-                        "@keyframes spin": {
-                            "0%": { transform: "rotate(0deg)" },
-                            "100%": { transform: "rotate(360deg)" },
-                        },
-                    },
-                },
-                "@media (max-width: 800px)": {
-                    ".sg-count, .gp-count, .gc-count": {
-                        display: "none",
-                    },
-                },
-                "@media (max-width: 560px)": {
-                    ".team-title": {
-                        ".team-abbr": {
-                            display: "none",
-                        },
-
-                        ".team-name": {
-                            display: "none",
-                        },
-                        ".team-shortname": {
-                            display: "block",
-                        },
-                    },
-                },
-                "@media (min-width: 560px)": {
-                    ".team-shortname": {
-                        display: "none",
+                    "@keyframes spin": {
+                        "0%": { transform: "rotate(0deg)" },
+                        "100%": { transform: "rotate(360deg)" },
                     },
                 },
             },
-            ".table-footer": {
-                display: "flex",
-                padding: "1em 1em 0 1em",
-                span: {
-                    fontWeight: "bold",
+            "@media (max-width: 800px)": {
+                ".sg-count, .gp-count, .gc-count": {
+                    display: "none",
                 },
+            },
+            "@media (max-width: 560px)": {
+                ".team-title": {
+                    ".team-abbr": {
+                        display: "none",
+                    },
 
-                ".colorinfo-box": {
-                    display: "inherit",
-                    alignItems: "left",
-                    flexDirection: "column",
-                    ".relegation-box, .classification-box": {
-                        display: "flex",
-                        alignItems: "center",
-                        columnGap: ".5em",
+                    ".team-name": {
+                        display: "none",
+                    },
+                    ".team-shortname": {
+                        display: "block",
+                    },
+                },
+            },
+            "@media (min-width: 560px)": {
+                ".team-shortname": {
+                    display: "none",
+                },
+            },
+        },
+        ".table-footer": {
+            display: "flex",
+            padding: "1em 1em 0 1em",
+            span: {
+                fontWeight: "bold",
+            },
 
-                        ".classification-color": {
-                            background: "green",
-                            width: "1em",
-                            height: "1em",
-                        },
-                        ".relegation-color": {
-                            background: "red",
-                            width: "1em",
-                            height: "1em",
-                        },
+            ".colorinfo-box": {
+                display: "inherit",
+                alignItems: "left",
+                flexDirection: "column",
+                ".relegation-box, .classification-box": {
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: ".5em",
+
+                    ".classification-color": {
+                        background: "green",
+                        width: "1em",
+                        height: "1em",
+                    },
+                    ".relegation-color": {
+                        background: "red",
+                        width: "1em",
+                        height: "1em",
                     },
                 },
             },
