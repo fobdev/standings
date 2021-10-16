@@ -14,7 +14,7 @@ function App() {
                 </Route>
                 <Route path="*">
                     <Typography variant="h3" fontWeight="200" textAlign="left" margin="1em">
-                        404 - Not Found
+                        404 - Não encontrado.
                     </Typography>
                 </Route>
             </Switch>
