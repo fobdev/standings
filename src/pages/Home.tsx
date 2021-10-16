@@ -61,14 +61,13 @@ export const Home: React.FC<Props> = () => {
 
     return (
         <Box sx={mainHomeBoxStyling}>
-            <Paper className="main-paper">
-                <Typography variant="h3" fontWeight="200" textAlign="center">
-                    Classificação de Ligas
+            <Paper className="main-paper" variant="outlined">
+                <Typography variant="h3" fontWeight="200" textAlign="right">
+                    Classificação
                 </Typography>
-                <Typography variant="h6" fontWeight="400" textAlign="center">
-                    Selecione uma liga para verificar a classificação de seus times.
+                <Typography variant="body1" fontWeight="300" textAlign="right">
+                    Escolha uma liga para exibir seus respectivos times e classificações
                 </Typography>
-
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
                 {leaguesTasks?.data.map((element, index) => {
                     return (
