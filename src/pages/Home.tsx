@@ -146,7 +146,13 @@ export const Home: React.FC<Props> = () => {
                     )}
                 </Paper>
             </Paper>
-            <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose} sx={mainDialogStyling}>
+            <Dialog
+                open={dialogOpen}
+                maxWidth="xl"
+                onClose={handleClose}
+                sx={mainDialogStyling}
+                PaperProps={{ sx: { borderRadius: "1.5em" } }}
+            >
                 <DialogTitle className="dialog-window-title">
                     {loading ? (
                         "Carregando informações da liga..."
