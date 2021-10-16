@@ -99,7 +99,7 @@ export const Home: React.FC<Props> = () => {
                 </Typography>
 
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
-                <Paper className="leagues-list-paper" elevation={5}>
+                <Paper className="leagues-list-paper" elevation={8}>
                     {leaguesLoading ? (
                         <Box className="loading-animation" />
                     ) : (
