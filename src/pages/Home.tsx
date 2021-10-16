@@ -88,10 +88,10 @@ export const Home: React.FC<Props> = () => {
                     );
                 })}
             </Paper>
-            <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose}>
-                <DialogTitle>
+            <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose} sx={mainDialogStyling}>
+                <DialogTitle className="dialog-window-title">
                     {loading ? (
-                        "carregando..."
+                        "Carregando informações da liga..."
                     ) : (
                         <Box className="title-box">
                             <span className="league-name-prefix">Times da liga </span>
