@@ -1,4 +1,5 @@
 import {
+    Button,
     Dialog,
     DialogContent,
     DialogTitle,
@@ -33,6 +34,13 @@ export const Home: React.FC<Props> = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
 
     /**
+     * Responsável pela quantidade de elementos da lista são exibidos
+     * na tela no momento, com um valor inicial de 5 e um incremento de
+     * +5 por clique, informado na chamada dele.
+     */
+    const [loadedComponent, setLoadedComponent] = useState(5);
+
+    /**
      * Lista de todas as Leagues disponíveis na API, recebida no useEffect()
      */
     const { leaguesTasks, getAllLeagues } = useLeagues();
@@ -52,7 +60,6 @@ export const Home: React.FC<Props> = () => {
      * Realiza a execução de todos requests que a página necessita e mantém atualizado.
      */
     useEffect(() => {
-        console.log(standingKey);
         getAllLeagues();
         getStanding(standingKey).then(() => {
             setLoading(false);
@@ -68,25 +75,44 @@ export const Home: React.FC<Props> = () => {
                 <Typography variant="body1" fontWeight="300" textAlign="right">
                     Escolha uma liga para exibir seus respectivos times e classificações
                 </Typography>
+
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
-                {leaguesTasks?.data.map((element, index) => {
-                    return (
-                        <LeagueItem
-                            index={index}
-                            key={index}
-                            onClick={() => {
-                                setStandingKey(element.id);
-                                setDialogOpen(true);
-                                setLoading(true);
-                            }}
-                            id={element.id}
-                            abbr={element.abbr}
-                            logos={element.logos}
-                            name={element.name}
-                            slug={element.slug}
-                        />
-                    );
-                })}
+                <Paper className="leagues-list-paper" elevation={5}>
+                    {leaguesTasks?.data.map((element, index) => {
+                        if (index < loadedComponent)
+                            return (
+                                <LeagueItem
+                                    index={index}
+                                    key={index}
+                                    onClick={() => {
+                                        setStandingKey(element.id);
+                                        setDialogOpen(true);
+                                        setLoading(true);
+                                    }}
+                                    id={element.id}
+                                    abbr={element.abbr}
+                                    logos={element.logos}
+                                    name={element.name}
+                                    slug={element.slug}
+                                />
+                            );
+                        /**
+                         * Incrementa 5 elementos a cada clique do botão
+                         */ else if (index === loadedComponent)
+                            return (
+                                <Button
+                                    disableRipple
+                                    sx={{ color: "#aaf" }}
+                                    onClick={() => {
+                                        setLoadedComponent(loadedComponent + 5);
+                                    }}
+                                >
+                                    Carregar mais...
+                                </Button>
+                            );
+                        else return null;
+                    })}
+                </Paper>
             </Paper>
             <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose} sx={mainDialogStyling}>
                 <DialogTitle className="dialog-window-title">
@@ -134,16 +160,16 @@ export const Home: React.FC<Props> = () => {
                                 <Box className="loading-animation" />
                             ) : (
                                 standingTasks?.data.standings.map((element, index, array) => {
-                                return loading ? null : (
-                                    <StandingListItem
-                                        iterationArray={array}
-                                        index={index}
-                                        key={index}
-                                        note={element.note}
-                                        team={element.team}
-                                        stats={element.stats}
-                                    />
-                                );
+                                    return loading ? null : (
+                                        <StandingListItem
+                                            iterationArray={array}
+                                            index={index}
+                                            key={index}
+                                            note={element.note}
+                                            team={element.team}
+                                            stats={element.stats}
+                                        />
+                                    );
                                 })
                             )}
                         </TableBody>
