@@ -3,20 +3,17 @@ import { SxProps, Theme } from "@mui/system";
 export const mainItemBoxStyling: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
-    margin: "1em 0",
-    img: {
-        width: "5em",
-        padding: ".2em",
-    },
-
     cursor: "pointer",
     userSelect: "none",
     transition: "all .15s",
+    borderRadius: "5em",
+    margin: "1em 0",
 
     ".main-box": {
+        padding: "1em 2em",
+        borderRadius: "5em",
         width: "100%",
         display: "flex",
-        padding: "1em",
         columnGap: "1.5em",
         ".title-box": {
             display: "inherit",
@@ -32,8 +29,13 @@ export const mainItemBoxStyling: SxProps<Theme> = {
             },
         },
         "&:hover": {
-            boxShadow: "1px 1px #bbb",
+            boxShadow: "inset 0 0 10px #bbb",
         },
+    },
+
+    img: {
+        width: "5em",
+        padding: ".2em",
     },
 };
 

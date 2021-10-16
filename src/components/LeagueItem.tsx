@@ -10,19 +10,15 @@ interface componentProps {
 }
 
 type Props = componentProps & LeaguesData;
-export const Item: React.FC<Props> = ({ id, logos, abbr, name, slug, onClick, index }) => {
+export const LeagueItem: React.FC<Props> = ({ id, logos, abbr, name, slug, onClick, index }) => {
     return (
         <Grow in={true} timeout={{ enter: index * 500 }}>
-            <ButtonBase sx={mainItemBoxStyling} onClick={onClick}>
-                <Paper elevation={5} className="main-box">
+            <ButtonBase sx={mainItemBoxStyling} onClick={onClick} disableRipple>
+                <Paper variant="outlined" className="main-box">
                     <img src={logos.light} alt="League Logo" />
                     <Box className="title-box">
-                        <Typography variant="h2" className="title-name">
-                            {name}
-                        </Typography>
-                        <Typography variant="h3" className="title-abbr">
-                            {abbr}
-                        </Typography>
+                        <Typography className="title-name">{name}</Typography>
+                        <Typography className="title-abbr">{abbr}</Typography>
                     </Box>
                 </Paper>
             </ButtonBase>
@@ -30,4 +26,4 @@ export const Item: React.FC<Props> = ({ id, logos, abbr, name, slug, onClick, in
     );
 };
 
-export default Item;
+export default LeagueItem;
