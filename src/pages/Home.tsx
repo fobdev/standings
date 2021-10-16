@@ -21,9 +21,26 @@ import useStanding from "../hooks/useStandings";
 interface Props {}
 
 export const Home: React.FC<Props> = () => {
+    /**
+     * Pega o ID correspondente ao item da lista e guarda o seu ID
+     * para ser usado no [ENDPOINT] /leagues/{id}/standings
+     */
     const [standingKey, setStandingKey] = useState("");
+
+    /**
+     * é responsável por abrir e fechar a tela de standings
+     */
     const [dialogOpen, setDialogOpen] = useState(false);
+
+    /**
+     * Lista de todas as Leagues disponíveis na API, recebida no useEffect()
+     */
     const { leaguesTasks, getAllLeagues } = useLeagues();
+
+    /**
+     * Lista de todos os times com todas as suas informações
+     * o diretório de interfaces contém todos os seus respectivos returns
+     */
     const { standingTasks, getStanding } = useStanding(standingKey);
     const [loading, setLoading] = useState(true);
 
@@ -31,6 +48,9 @@ export const Home: React.FC<Props> = () => {
         setDialogOpen(false);
     };
 
+    /**
+     * Realiza a execução de todos requests que a página necessita e mantém atualizado.
+     */
     useEffect(() => {
         console.log(standingKey);
         getAllLeagues();
