@@ -3,15 +3,25 @@ import { SxProps, Theme } from "@mui/system";
 export const mainHomeBoxStyling: SxProps<Theme> = {
     display: "flex",
     justifyContent: "center",
-    alignContent: "center",
-    fontWeight: "bold",
+    alignItems: "center",
 
     ".main-paper": {
         borderRadius: "2em",
         display: "flex",
         flexDirection: "column",
-        padding: "2em 6em",
+        padding: "2em 3vw",
+
         margin: "4em 0",
+
+        ".leagues-list-paper": {
+            display: "inherit",
+            flexDirection: "column",
+            justifySelf: "center",
+            borderRadius: "1em",
+            width: "100%",
+            paddingTop: "1em",
+            margin: "1em 0",
+        },
     },
 };
 

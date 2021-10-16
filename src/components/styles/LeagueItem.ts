@@ -1,42 +1,33 @@
 import { SxProps, Theme } from "@mui/system";
 
-export const mainItemBoxStyling: SxProps<Theme> = {
-    display: "flex",
-    flexDirection: "column",
+export const mainButtonStyling: SxProps<Theme> = {
+    justifyContent: "left",
+    color: "black",
+    textAlign: "left",
+    textTransform: "none",
+
+    margin: ".5em 1em",
+    padding: "1em",
+
+    border: "1px solid #ccf",
+    borderRadius: "5em",
+
     cursor: "pointer",
     userSelect: "none",
-    transition: "all .15s",
-    borderRadius: "5em",
-    margin: "1em 0",
+    ".title-box": {
+        alignSelf: "center",
+        ".title-name": { fontSize: "1.3em", fontWeight: "300" },
+        ".title-abbr": { fontWeight: "bold" },
+    },
 
-    ".main-box": {
-        padding: "1em 2em",
-        borderRadius: "5em",
-        width: "100%",
-        display: "flex",
-        columnGap: "1.5em",
-        ".title-box": {
-            display: "inherit",
-            flexDirection: "column",
-            ".title-abbr": {
-                fontSize: "1em",
-                fontWeight: "bold",
-                textAlign: "left",
-            },
-            ".title-name": {
-                fontSize: "2.5em",
-                fontWeight: "200",
-            },
-        },
-        "&:hover": {
-            boxShadow: "inset 0 0 10px #bbb",
-        },
+    transition: "all 1s",
+    "&:hover": {
+        boxShadow: "inset 0 0 10px #bbb",
+        background: "white",
     },
 
     img: {
-        width: "5em",
+        width: "4em",
         padding: ".2em",
     },
 };
-
-export default mainItemBoxStyling;
