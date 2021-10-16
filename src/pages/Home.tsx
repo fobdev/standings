@@ -144,12 +144,20 @@ export const Home: React.FC<Props> = () => {
                             </TableBody>
                             <TableFooter className="table-footer">
                                 <Box>
-                                    <Typography>P - Pontos</Typography>
-                                    <Typography>J - Jogos</Typography>
+                                    <Typography>
+                                        <span>P</span> - Pontos
+                                    </Typography>
+                                    <Typography>
+                                        <span>J</span> - Jogos
+                                    </Typography>
                                 </Box>
                                 <Box>
-                                    <Typography>V - Vitórias</Typography>
-                                    <Typography>SG - Saldo de Gols</Typography>
+                                    <Typography>
+                                        <span>V</span> - Vitórias
+                                    </Typography>
+                                    <Typography>
+                                        <span>SG</span> - Saldo de Gols
+                                    </Typography>
                                 </Box>
                                 <Box className="colorinfo-box">
                                     <Box className="classification-box">
