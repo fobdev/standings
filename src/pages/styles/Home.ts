@@ -68,7 +68,7 @@ export const mainDialogStyling: SxProps<Theme> = {
                             display: "none",
                         },
                         ".team-shortname": {
-                            display: "box",
+                            display: "block",
                         },
                     },
                 },
