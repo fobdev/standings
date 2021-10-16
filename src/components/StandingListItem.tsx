@@ -7,6 +7,7 @@ import { useState } from "react";
 
 interface componentProps {
     index: number;
+    iterationArray: Array<any>;
 }
 
 type StandingsProps = componentProps & StandingsResponse;
