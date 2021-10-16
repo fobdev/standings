@@ -95,7 +95,7 @@ export const Home: React.FC<Props> = () => {
                         "Carregando informações da liga..."
                     ) : (
                         <Box className="title-box">
-                            <span className="league-name-prefix">Times da liga </span>
+                            <span className="league-name-prefix">Classificações da liga </span>
                             <span className="league-bigname">{standingTasks?.data.name}</span>{" "}
                             <span className="league-title-abbr">
                                 {standingTasks?.data.abbreviation}
