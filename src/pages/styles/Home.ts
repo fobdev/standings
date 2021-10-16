@@ -32,10 +32,14 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
             display: "inherit",
             flexDirection: "column",
             justifySelf: "center",
-            borderRadius: "1em",
+            borderRadius: "2em",
             width: "100%",
             paddingTop: "1em",
             margin: "1em 0",
+        },
+
+        "@media (max-width: 530px)": {
+            borderRadius: 0,
         },
     },
 };
