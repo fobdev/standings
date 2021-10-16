@@ -19,8 +19,6 @@ export const mainButtonStyling: SxProps<Theme> = {
         ".title-name": { fontSize: "1.3em", fontWeight: "300" },
         ".title-abbr": { fontWeight: "bold" },
     },
-
-    transition: "all 1s",
     "&:hover": {
         boxShadow: "inset 0 0 10px #bbb",
         background: "white",
