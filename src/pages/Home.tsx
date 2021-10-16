@@ -71,7 +71,7 @@ export const Home: React.FC<Props> = () => {
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
                 {leaguesTasks?.data.map((element, index) => {
                     return (
-                        <Item
+                        <LeagueItem
                             index={index}
                             key={index}
                             onClick={() => {
