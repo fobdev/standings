@@ -7,7 +7,6 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     fontWeight: "bold",
 
     ".main-paper": {
-        boxShadow: "inset 0 0 10px #bbb",
         borderRadius: "2em",
         display: "flex",
         flexDirection: "column",
@@ -16,4 +15,33 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     },
 };
 
-export default mainHomeBoxStyling;
+export const mainDialogStyling: SxProps<Theme> = {
+    ".dialog-content": {
+        ".teams-table": {
+            "@media (max-width: 700px)": {
+                ".sg-count, .gp-count": {
+                    display: "none",
+                },
+            },
+            "@media (max-width: 560px)": {
+                ".team-title": {
+                    ".team-abbr": {
+                        display: "none",
+                    },
+
+                    ".team-name": {
+                        display: "none",
+                    },
+                    ".team-shortname": {
+                        display: "box",
+                    },
+                },
+            },
+            "@media (min-width: 560px)": {
+                ".team-shortname": {
+                    display: "none",
+                },
+            },
+        },
+    },
+};
