@@ -103,18 +103,28 @@ export const Home: React.FC<Props> = () => {
                         </Box>
                     )}
                 </DialogTitle>
-                <DialogContent sx={{ display: "flex", flexDirection: "column" }}>
+                <DialogContent className="dialog-content">
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
                     <TableContainer>
-                        <Table stickyHeader={true} size="small">
+                        <Table stickyHeader={true} size="small" className="teams-table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Time</TableCell>
-                                    <TableCell align="right">P</TableCell>
-                                    <TableCell align="right">J</TableCell>
-                                    <TableCell align="right">V</TableCell>
-                                    <TableCell align="right">SG</TableCell>
-                                    <TableCell align="right">GP</TableCell>
+                                    <TableCell align="right" className="points-count">
+                                        P
+                                    </TableCell>
+                                    <TableCell align="right" className="gamesplayed-count">
+                                        J
+                                    </TableCell>
+                                    <TableCell align="right" className="win-count">
+                                        V
+                                    </TableCell>
+                                    <TableCell align="right" className="sg-count">
+                                        SG
+                                    </TableCell>
+                                    <TableCell align="right" className="gp-count">
+                                        GP
+                                    </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
