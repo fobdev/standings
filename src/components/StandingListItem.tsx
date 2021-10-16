@@ -69,6 +69,7 @@ export const StandingListItem: React.FC<StandingsProps> = ({
                     quando o media query de 700px for acionado:
                     - sg-count será removido da tela.
                     - gp-count será removido da tela.
+                      gc-count será removido da tela.
                 */}
                 <TableCell align="right" className="points-count">
                     {pointsCount?.displayValue}
@@ -85,6 +86,9 @@ export const StandingListItem: React.FC<StandingsProps> = ({
                 <TableCell align="right" className="gp-count">
                     {pointsForCount?.displayValue}
                 </TableCell>
+                <TableCell align="right" className="gc-count">
+                    {pointsAgainstCount?.displayValue}
+                </TableCell>
 
                 {/* 
                 
@@ -94,7 +98,8 @@ export const StandingListItem: React.FC<StandingsProps> = ({
                 <TableCell>J</TableCell>
                 <TableCell>V</TableCell>
                 <TableCell>SG</TableCell>
-                <TableCell>F</TableCell> */}
+                <TableCell>GP</TableCell>
+                <TableCell>GC</TableCell> */}
             </TableRow>
         </Grow>
     );

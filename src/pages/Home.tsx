@@ -124,6 +124,9 @@ export const Home: React.FC<Props> = () => {
                                     <TableCell align="right" className="gp-count">
                                         GP
                                     </TableCell>
+                                    <TableCell align="right" className="gc-count">
+                                        GC
+                                    </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody className="table-body">

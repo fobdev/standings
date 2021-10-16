@@ -53,8 +53,8 @@ export const mainDialogStyling: SxProps<Theme> = {
                         },
                     },
                 },
-                "@media (max-width: 700px)": {
-                    ".sg-count, .gp-count": {
+                "@media (max-width: 800px)": {
+                    ".sg-count, .gp-count, .gc-count": {
                         display: "none",
                     },
                 },
