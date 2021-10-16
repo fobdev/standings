@@ -32,6 +32,7 @@ export const StandingListItem: React.FC<StandingsProps> = ({
     let gamesPlayedCount = stats.find((current) => current.name === "gamesPlayed");
     let pointsCount = stats.find((current) => current.name === "points");
     let pointsForCount = stats.find((current) => current.name === "pointsFor");
+    let pointsAgainstCount = stats.find((current) => current.name === "pointsAgainst");
     let pointDifferentialCount = stats.find((current) => current.name === "pointDifferential");
 
     return (
