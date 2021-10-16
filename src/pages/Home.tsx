@@ -71,11 +71,17 @@ export const Home: React.FC<Props> = () => {
             </Paper>
             <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose}>
                 <DialogTitle>
-                    Times da liga{" "}
-                    <span style={{ fontSize: "1.4em" }}>{standingTasks?.data.name}</span>{" "}
-                    <span style={{ fontSize: ".8em", fontWeight: 300, color: "#bbb" }}>
-                        {standingTasks?.data.abbreviation}
-                    </span>
+                    {loading ? (
+                        "carregando..."
+                    ) : (
+                        <Box>
+                            Times da liga{" "}
+                            <span style={{ fontSize: "1.4em" }}>{standingTasks?.data.name}</span>{" "}
+                            <span style={{ fontSize: ".8em", fontWeight: 300, color: "#bbb" }}>
+                                {standingTasks?.data.abbreviation}
+                            </span>
+                        </Box>
+                    )}
                 </DialogTitle>
                 <DialogContent sx={{ display: "flex", flexDirection: "column" }}>
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
@@ -98,6 +104,7 @@ export const Home: React.FC<Props> = () => {
                                             border: "8px solid #f3f3f3",
                                             borderRadius: "50%",
                                             borderTop: "8px solid #3498db",
+                                            margin: "1em",
                                             width: "30px",
                                             height: "30px",
                                             animation: "spin 2s linear infinite",
@@ -109,9 +116,10 @@ export const Home: React.FC<Props> = () => {
                                         }}
                                     />
                                 ) : null}
-                                {standingTasks?.data.standings.map((element, index) => {
+                                {standingTasks?.data.standings.map((element, index, array) => {
                                     return loading ? null : (
                                         <StandingListItem
+                                            iterationArray={array}
                                             index={index}
                                             key={index}
                                             note={element.note}
