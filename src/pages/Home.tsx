@@ -12,14 +12,13 @@ import {
     Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import { mainHomeBoxStyling } from "./styles/Home";
+import { mainHomeBoxStyling, mainDialogStyling } from "./styles";
 import { useEffect, useState } from "react";
-import { Item, StandingListItem } from "../components";
+import { LeagueItem, StandingListItem } from "../components";
 import useLeagues from "../hooks/useLeagues";
 import useStanding from "../hooks/useStandings";
 
 interface Props {}
-
 export const Home: React.FC<Props> = () => {
     /**
      * Pega o ID correspondente ao item da lista e guarda o seu ID
@@ -104,7 +103,7 @@ export const Home: React.FC<Props> = () => {
                 </DialogTitle>
                 <DialogContent className="dialog-content">
                     {/* Abre uma janela contendo todos os elementos de certa liga */}
-                    <TableContainer>
+                    <TableContainer className="table-container">
                         <Table stickyHeader={true} size="small" className="teams-table">
                             <TableHead>
                                 <TableRow>
@@ -126,26 +125,9 @@ export const Home: React.FC<Props> = () => {
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
+                            <TableBody className="table-body">
                                 {/* Animação de loading enquanto os fetchs estão sendo realizados */}
-                                {loading ? (
-                                    <Box
-                                        sx={{
-                                            border: "8px solid #f3f3f3",
-                                            borderRadius: "50%",
-                                            borderTop: "8px solid #3498db",
-                                            margin: "1em",
-                                            width: "30px",
-                                            height: "30px",
-                                            animation: "spin 2s linear infinite",
-
-                                            "@keyframes spin": {
-                                                "0%": { transform: "rotate(0deg)" },
-                                                "100%": { transform: "rotate(360deg)" },
-                                            },
-                                        }}
-                                    />
-                                ) : null}
+                                {loading ? <Box className="loading-animation" /> : null}
                                 {standingTasks?.data.standings.map((element, index, array) => {
                                     return loading ? null : (
                                         <StandingListItem
