@@ -168,6 +168,9 @@ export const Home: React.FC<Props> = () => {
                     )}
                 </DialogTitle>
                 <DialogContent className="dialog-content">
+                    {/* Uma lista de tabs com no máximo 10 anos visíveis, clicar em um ano irá exibir
+                        as Classificações de times correspontendes ao ano.
+                    */}
                     <TabContext value={tabValue}>
                         <TabList onChange={handleTabChange}>
                             {seasonTasks?.data?.seasons.map((value, index) => {
