@@ -27,6 +27,9 @@ export const StandingListItem: React.FC<StandingsProps> = ({ note, stats, team, 
         <Grow in={true} timeout={{ enter: index * 200 }}>
             <TableRow key={index} sx={mainStandingListItemBoxStyling}>
                 <TableCell className="left-side">
+                    <Typography className="position">
+                        {index + 1 <= 9 ? `  ${index + 1}` : index + 1}
+                    </Typography>
                     <img src={teamImage} alt={imageAlt} />
                     <Box className="team-title">
                         <Typography className="team-name">{team.displayName}</Typography>
