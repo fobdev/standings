@@ -92,10 +92,10 @@ export const Home: React.FC<Props> = () => {
         <Box sx={mainHomeBoxStyling}>
             <Paper className="main-paper" variant="outlined">
                 <Typography variant="h3" fontWeight="200" textAlign="right">
-                    Classificação
+                    Classificações
                 </Typography>
                 <Typography variant="body1" fontWeight="300" textAlign="right">
-                    Escolha uma liga para exibir seus respectivos times e classificações
+                    Escolha uma liga para exibir seus respectivos times e suas classificações
                 </Typography>
 
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
