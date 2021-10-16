@@ -11,6 +11,19 @@ export const mainStandingListItemBoxStyling: SxProps<Theme> = {
         minWidth: "20vw",
         alignContent: "center",
         columnGap: "1em",
+        ".qualifiers": {
+            width: "2px",
+            maxHeight: "100%",
+            backgroundColor: "green",
+        },
+        ".eliminations": {
+            width: "2px",
+            maxHeight: "100%",
+            backgroundColor: "red",
+        },
+        ".aligner": {
+            marginLeft: "2px",
+        },
         ".team-title": {
             display: "flex",
             columnGap: ".5em",
