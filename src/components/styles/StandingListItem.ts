@@ -2,6 +2,7 @@ import { SxProps, Theme } from "@mui/system";
 
 export const mainStandingListItemBoxStyling: SxProps<Theme> = {
     cursor: "pointer",
+    userSelect: "none",
     "&:hover": {
         background: "#eee",
     },
