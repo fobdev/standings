@@ -1,24 +1,14 @@
-import {
-    Button,
-    Dialog,
-    DialogContent,
-    DialogTitle,
-    Grid,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableFooter,
-    TableHead,
-    TableRow,
-    Typography,
-} from "@mui/material";
+import { Button, Dialog, DialogContent, DialogTitle, Paper, Tab, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { mainHomeBoxStyling, mainDialogStyling } from "./styles";
-import { useEffect, useState } from "react";
-import { LeagueItem, StandingListItem } from "../components";
+import React, { useEffect, useState } from "react";
+import { LeagueItem } from "../components";
 import useLeagues from "../hooks/useLeagues";
 import useStanding from "../hooks/useStandings";
+import useSeasons from "../hooks/useSeasons";
+
+import StandingsTable from "../components/StandingsTable";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 interface Props {}
 export const Home: React.FC<Props> = () => {
@@ -27,6 +17,23 @@ export const Home: React.FC<Props> = () => {
      * para ser usado no [ENDPOINT] /leagues/{id}/standings
      */
     const [standingKey, setStandingKey] = useState("");
+
+    /**
+     * Lista de todas as Leagues disponíveis na API, recebida no useEffect()
+     */
+    const { leaguesTasks, getAllLeagues } = useLeagues();
+    const { seasonTasks, getSeason } = useSeasons(standingKey);
+    /**
+     * Lista de todos os times com todas as suas informações
+     * o diretório de interfaces contém todos os seus respectivos returns
+     *
+     * - setSeason seleciona o ano da lista
+     *
+     * - tabValue controla a posição do ponteiro na tab
+     */
+    const [season, setSeason] = useState(2021);
+    const [tabValue, setTabValue] = useState("2021");
+    const { standingTasks, getStanding } = useStanding(standingKey, season);
 
     /**
      * é responsável por abrir e fechar a tela de standings
@@ -41,20 +48,10 @@ export const Home: React.FC<Props> = () => {
     const [loadedComponent, setLoadedComponent] = useState(5);
 
     /**
-     * Lista de todas as Leagues disponíveis na API, recebida no useEffect()
-     */
-    const { leaguesTasks, getAllLeagues } = useLeagues();
-
-    /**
-     * Lista de todos os times com todas as suas informações
-     * o diretório de interfaces contém todos os seus respectivos returns
-     */
-    const { standingTasks, getStanding } = useStanding(standingKey);
-
-    /**
-     * Muda o estado da animação de loading
+     * Muda o estado da animação de loading dos elementos
      */
     const [loading, setLoading] = useState(true);
+    const [leaguesLoading, setLeaguesLoading] = useState(true);
 
     /**
      * Verifica qual o index atual da leagueTasks, para não renderizar
@@ -62,6 +59,18 @@ export const Home: React.FC<Props> = () => {
      */
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    /**
+     * Lida com a mudança de estado das tabs e altera os valores da lista.
+     */
+    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+        setSeason(parseInt(newValue));
+        setTabValue(newValue);
+        setLoading(true);
+    };
+
+    /**
+     * Lida com o fechamento da janela secundária.
+     */
     const handleClose = () => {
         setDialogOpen(false);
     };
@@ -70,11 +79,14 @@ export const Home: React.FC<Props> = () => {
      * Realiza a execução de todos requests que a página necessita e mantém atualizado.
      */
     useEffect(() => {
-        getAllLeagues();
-        getStanding(standingKey).then(() => {
+        getAllLeagues().then(() => {
+            setLeaguesLoading(false);
+        });
+        getStanding(standingKey, season).then(() => {
             setLoading(false);
         });
-    }, [getAllLeagues, getStanding, standingKey]);
+        getSeason(standingKey).then(() => setLoading(false));
+    }, [getSeason, getAllLeagues, getStanding, standingKey, season]);
 
     return (
         <Box sx={mainHomeBoxStyling}>
@@ -88,46 +100,50 @@ export const Home: React.FC<Props> = () => {
 
                 {/* Mapeia todos as Leagues e retorna um Component Item para cada uma delas */}
                 <Paper className="leagues-list-paper" elevation={5}>
-                    {leaguesTasks?.data.map((element, index) => {
-                        if (index < loadedComponent)
-                            return (
-                                <LeagueItem
-                                    index={index}
-                                    key={index}
-                                    onClick={() => {
-                                        setStandingKey(element.id);
-                                        setDialogOpen(true);
+                    {leaguesLoading ? (
+                        <Box className="loading-animation" />
+                    ) : (
+                        leaguesTasks?.data.map((element, index) => {
+                            if (index < loadedComponent) {
+                                return (
+                                    <LeagueItem
+                                        index={index}
+                                        key={index}
+                                        onClick={() => {
+                                            setStandingKey(element.id);
+                                            setDialogOpen(true);
 
-                                        /**
-                                         * Verifica index duplicado, para não executar a animação de
-                                         * loading quando já existir algo carregado.
-                                         */
-                                        if (currentIndex !== index) setLoading(true);
-                                        setCurrentIndex(index);
-                                    }}
-                                    id={element.id}
-                                    abbr={element.abbr}
-                                    logos={element.logos}
-                                    name={element.name}
-                                    slug={element.slug}
-                                />
-                            );
-                        /**
-                         * Incrementa 5 elementos a cada clique do botão
-                         */ else if (index === loadedComponent)
-                            return (
-                                <Button
-                                    disableRipple
-                                    sx={{ color: "#aaf" }}
-                                    onClick={() => {
-                                        setLoadedComponent(loadedComponent + 5);
-                                    }}
-                                >
-                                    Carregar mais...
-                                </Button>
-                            );
-                        else return null;
-                    })}
+                                            /**
+                                             * Verifica index duplicado, para não executar a animação de
+                                             * loading quando já existir algo carregado.
+                                             */
+                                            if (currentIndex !== index) setLoading(true);
+                                            setCurrentIndex(index);
+                                        }}
+                                        id={element.id}
+                                        abbr={element.abbr}
+                                        logos={element.logos}
+                                        name={element.name}
+                                        slug={element.slug}
+                                    />
+                                );
+
+                                // Incrementa 5 elementos a cada clique do botão
+                            } else if (index === loadedComponent) {
+                                return (
+                                    <Button
+                                        disableRipple
+                                        sx={{ color: "#aaf" }}
+                                        onClick={() => {
+                                            setLoadedComponent(loadedComponent + 5);
+                                        }}
+                                    >
+                                        Carregar mais...
+                                    </Button>
+                                );
+                            } else return null;
+                        })
+                    )}
                 </Paper>
             </Paper>
             <Dialog open={dialogOpen} maxWidth="xl" onClose={handleClose} sx={mainDialogStyling}>
@@ -138,6 +154,7 @@ export const Home: React.FC<Props> = () => {
                         <Box className="title-box">
                             <span className="league-name-prefix">Classificações da liga </span>
                             <span className="league-bigname">{standingTasks?.data.name}</span>{" "}
+                            <span className="league-bigname"> - {season}</span>{" "}
                             <span className="league-title-abbr">
                                 {standingTasks?.data.abbreviation}
                             </span>
@@ -145,91 +162,24 @@ export const Home: React.FC<Props> = () => {
                     )}
                 </DialogTitle>
                 <DialogContent className="dialog-content">
-                    {/* Abre uma janela contendo todos os elementos de certa liga */}
-                    <Table stickyHeader={true} size="small" className="teams-table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Time</TableCell>
-                                <TableCell align="right" className="points-count">
-                                    P
-                                </TableCell>
-                                <TableCell align="right" className="gamesplayed-count">
-                                    J
-                                </TableCell>
-                                <TableCell align="right" className="win-count">
-                                    V
-                                </TableCell>
-                                <TableCell align="right" className="sg-count">
-                                    SG
-                                </TableCell>
-                                <TableCell align="right" className="gp-count">
-                                    GP
-                                </TableCell>
-                                <TableCell align="right" className="gc-count">
-                                    GC
-                                </TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody className="table-body">
-                            {/* Animação de loading enquanto os fetchs estão sendo realizados */}
-                            {loading ? (
-                                <Box className="loading-animation" />
-                            ) : (
-                                standingTasks?.data.standings.map((element, index, array) => {
-                                    return loading ? null : (
-                                        <StandingListItem
-                                            iterationArray={array}
-                                            index={index}
-                                            key={index}
-                                            note={element.note}
-                                            team={element.team}
-                                            stats={element.stats}
-                                        />
-                                    );
-                                })
-                            )}
-                        </TableBody>
-                        <TableFooter className="table-footer">
-                            <Grid container spacing={2}>
-                                <Grid item>
-                                    <Typography>
-                                        <span>P</span> - Pontos
-                                    </Typography>
-                                    <Typography>
-                                        <span>J</span> - Jogos
-                                    </Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Typography>
-                                        <span>V</span> - Vitórias
-                                    </Typography>
-                                    <Typography>
-                                        <span>SG</span> - Saldo de Gols
-                                    </Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Typography>
-                                        <span>GP</span> - Gols Pró
-                                    </Typography>
-                                    <Typography>
-                                        <span>GC</span> - Gols Contra
-                                    </Typography>
-                                </Grid>
-                                <Grid className="colorinfo-box" item>
-                                    <Box className="classification-box">
-                                        <Box className="classification-color" />
-                                        <Typography className="classification">
-                                            Classificação
-                                        </Typography>
-                                    </Box>
-                                    <Box className="relegation-box">
-                                        <Box className="relegation-color" />
-                                        <Typography className="relegation">Rebaixamento</Typography>
-                                    </Box>
-                                </Grid>
-                            </Grid>
-                        </TableFooter>
-                    </Table>
+                    <TabContext value={tabValue}>
+                        <TabList onChange={handleTabChange}>
+                            {seasonTasks?.data?.seasons.map((value, index) => {
+                                if (index < 10) {
+                                    return <Tab label={value.year} value={`${value.year}`} />;
+                                }
+                                return null;
+                            })}
+                        </TabList>
+                        <TabPanel value={tabValue}>
+                            <StandingsTable
+                                data={seasonTasks?.data}
+                                status={seasonTasks?.status}
+                                isLoading={loading}
+                                standingTasks={standingTasks}
+                            />
+                        </TabPanel>
+                    </TabContext>
                 </DialogContent>
             </Dialog>
         </Box>
