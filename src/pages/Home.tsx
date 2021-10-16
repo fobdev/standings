@@ -130,8 +130,10 @@ export const Home: React.FC<Props> = () => {
                         </TableHead>
                         <TableBody className="table-body">
                             {/* Animação de loading enquanto os fetchs estão sendo realizados */}
-                            {loading ? <Box className="loading-animation" /> : null}
-                            {standingTasks?.data.standings.map((element, index, array) => {
+                            {loading ? (
+                                <Box className="loading-animation" />
+                            ) : (
+                                standingTasks?.data.standings.map((element, index, array) => {
                                 return loading ? null : (
                                     <StandingListItem
                                         iterationArray={array}
@@ -142,7 +144,8 @@ export const Home: React.FC<Props> = () => {
                                         stats={element.stats}
                                     />
                                 );
-                            })}
+                                })
+                            )}
                         </TableBody>
                         <TableFooter className="table-footer">
                             <Grid container spacing={2}>
