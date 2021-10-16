@@ -5,6 +5,21 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     justifyContent: "center",
     alignItems: "center",
 
+    ".loading-animation": {
+        border: "8px solid #f3f3f3",
+        borderRadius: "50%",
+        borderTop: "8px solid #bbe",
+        margin: "1em",
+        width: "30px",
+        height: "30px",
+        animation: "spin 2s linear infinite",
+
+        "@keyframes spin": {
+            "0%": { transform: "rotate(0deg)" },
+            "100%": { transform: "rotate(360deg)" },
+        },
+    },
+
     ".main-paper": {
         borderRadius: "2em",
         display: "flex",
