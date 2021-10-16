@@ -26,8 +26,10 @@ export const StandingListItem: React.FC<StandingsProps> = ({
 
     let winCount = stats.find((current) => current.name === "wins");
     let lossCount = stats.find((current) => current.name === "losses");
-    let tieCount = stats.find((current) => current.name === "ties");
     let gamesPlayedCount = stats.find((current) => current.name === "gamesPlayed");
+    let pointsCount = stats.find((current) => current.name === "points");
+    let pointsForCount = stats.find((current) => current.name === "pointsFor");
+    let pointDifferentialCount = stats.find((current) => current.name === "pointDifferential");
 
     return (
         <Grow in={true} timeout={{ enter: index * 100 }}>
@@ -53,10 +55,17 @@ export const StandingListItem: React.FC<StandingsProps> = ({
                         <Typography className="team-abbr">{team.abbreviation}</Typography>
                     </Box>
                 </TableCell>
-                <TableCell align="right">{winCount?.value}</TableCell>
-                <TableCell align="right">{tieCount?.value}</TableCell>
-                <TableCell align="right">{lossCount?.value}</TableCell>
-                <TableCell align="right">{gamesPlayedCount?.value}</TableCell>
+                <TableCell align="right">{pointsCount?.displayValue}</TableCell>
+                <TableCell align="right">{gamesPlayedCount?.displayValue}</TableCell>
+                <TableCell align="right">{winCount?.displayValue}</TableCell>
+                <TableCell align="right">{pointDifferentialCount?.displayValue}</TableCell>
+                <TableCell align="right">{pointsForCount?.displayValue}</TableCell>
+
+                {/* <TableCell align="right">P</TableCell>
+                <TableCell align="right">J</TableCell>
+                <TableCell align="right">V</TableCell>
+                <TableCell align="right">SG</TableCell>
+                <TableCell align="right">F</TableCell> */}
             </TableRow>
         </Grow>
     );

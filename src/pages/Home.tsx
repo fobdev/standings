@@ -90,10 +90,11 @@ export const Home: React.FC<Props> = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Time</TableCell>
-                                    <TableCell align="right">Vitórias</TableCell>
-                                    <TableCell align="right">Empates</TableCell>
-                                    <TableCell align="right">Derrotas</TableCell>
-                                    <TableCell align="right">Jogos</TableCell>
+                                    <TableCell align="right">P</TableCell>
+                                    <TableCell align="right">J</TableCell>
+                                    <TableCell align="right">V</TableCell>
+                                    <TableCell align="right">SG</TableCell>
+                                    <TableCell align="right">GP</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
