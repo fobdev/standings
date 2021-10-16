@@ -50,7 +50,17 @@ export const Home: React.FC<Props> = () => {
      * o diretório de interfaces contém todos os seus respectivos returns
      */
     const { standingTasks, getStanding } = useStanding(standingKey);
+
+    /**
+     * Muda o estado da animação de loading
+     */
     const [loading, setLoading] = useState(true);
+
+    /**
+     * Verifica qual o index atual da leagueTasks, para não renderizar
+     * a animação de loading quando já tem dados carregados.
+     */
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleClose = () => {
         setDialogOpen(false);
@@ -87,7 +97,13 @@ export const Home: React.FC<Props> = () => {
                                     onClick={() => {
                                         setStandingKey(element.id);
                                         setDialogOpen(true);
-                                        setLoading(true);
+
+                                        /**
+                                         * Verifica index duplicado, para não executar a animação de
+                                         * loading quando já existir algo carregado.
+                                         */
+                                        if (currentIndex !== index) setLoading(true);
+                                        setCurrentIndex(index);
                                     }}
                                     id={element.id}
                                     abbr={element.abbr}
