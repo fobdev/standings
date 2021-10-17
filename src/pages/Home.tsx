@@ -16,7 +16,7 @@ export const Home: React.FC<Props> = () => {
      * Pega o ID correspondente ao item da lista e guarda o seu ID
      * para ser usado no [ENDPOINT] /leagues/{id}/standings
      */
-    const [standingKey, setStandingKey] = useState("");
+    const [standingKey, setStandingKey] = useState("arg.1");
 
     /**
      * Lista de todas as Leagues disponíveis na API, recebida no useEffect()
@@ -132,6 +132,7 @@ export const Home: React.FC<Props> = () => {
                             } else if (index === loadedComponent) {
                                 return (
                                     <Button
+                                        key={index}
                                         disableRipple
                                         sx={{ color: "#aaf" }}
                                         onClick={() => {
@@ -187,7 +188,13 @@ export const Home: React.FC<Props> = () => {
                         >
                             {seasonTasks?.data?.seasons.map((value, index) => {
                                 if (index < 10) {
-                                    return <Tab label={value.year} value={`${value.year}`} />;
+                                    return (
+                                        <Tab
+                                            key={index}
+                                            label={value.year}
+                                            value={`${value.year}`}
+                                        />
+                                    );
                                 }
                                 return null;
                             })}

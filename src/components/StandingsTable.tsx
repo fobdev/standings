@@ -70,42 +70,48 @@ export const StandingsTable: React.FC<ComponentProps> = ({
                 )}
             </TableBody>
             <TableFooter className="table-footer">
-                <Grid container spacing={2}>
-                    <Grid item>
-                        <Typography>
-                            <span>P</span> - Pontos
-                        </Typography>
-                        <Typography>
-                            <span>J</span> - Jogos
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-                            <span>V</span> - Vitórias
-                        </Typography>
-                        <Typography>
-                            <span>SG</span> - Saldo de Gols
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        <Typography>
-                            <span>GP</span> - Gols Pró
-                        </Typography>
-                        <Typography>
-                            <span>GC</span> - Gols Contra
-                        </Typography>
-                    </Grid>
-                    <Grid className="colorinfo-box" item>
-                        <Box className="classification-box">
-                            <Box className="classification-color" />
-                            <Typography className="classification">Classificação</Typography>
-                        </Box>
-                        <Box className="relegation-box">
-                            <Box className="relegation-color" />
-                            <Typography className="relegation">Rebaixamento</Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+                <TableRow>
+                    <TableCell>
+                        <Grid container spacing={2}>
+                            <Grid item>
+                                <Typography>
+                                    <span>P</span> - Pontos
+                                </Typography>
+                                <Typography>
+                                    <span>J</span> - Jogos
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography>
+                                    <span>V</span> - Vitórias
+                                </Typography>
+                                <Typography>
+                                    <span>SG</span> - Saldo de Gols
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography>
+                                    <span>GP</span> - Gols Pró
+                                </Typography>
+                                <Typography>
+                                    <span>GC</span> - Gols Contra
+                                </Typography>
+                            </Grid>
+                            <Grid className="colorinfo-box" item>
+                                <Box className="classification-box">
+                                    <Box className="classification-color" />
+                                    <Typography className="classification">
+                                        Classificação
+                                    </Typography>
+                                </Box>
+                                <Box className="relegation-box">
+                                    <Box className="relegation-color" />
+                                    <Typography className="relegation">Rebaixamento</Typography>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </TableCell>
+                </TableRow>
             </TableFooter>
         </Table>
     );
