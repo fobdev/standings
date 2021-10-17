@@ -1,5 +1,5 @@
 # standings-fetch
-available at **standings-fetch.herokuapp.com**
+available at **https://standings-fetch.herokuapp.com/**
 basic application that make GET requests to this API: **https://github.com/azharimm/football-standings-api**
 
 ### to-do list
