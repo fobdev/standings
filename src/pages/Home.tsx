@@ -172,7 +172,11 @@ export const Home: React.FC<Props> = () => {
                         as Classificações de times correspontendes ao ano.
                     */}
                     <TabContext value={tabValue}>
-                        <TabList onChange={handleTabChange}>
+                        <TabList
+                            onChange={handleTabChange}
+                            variant="scrollable"
+                            scrollButtons="auto"
+                        >
                             {seasonTasks?.data?.seasons.map((value, index) => {
                                 if (index < 10) {
                                     return <Tab label={value.year} value={`${value.year}`} />;
@@ -180,7 +184,7 @@ export const Home: React.FC<Props> = () => {
                                 return null;
                             })}
                         </TabList>
-                        <TabPanel value={tabValue}>
+                        <TabPanel value={tabValue} className="main-tab-panel">
                             {/**
                              *
                              *  Mostra as classificações do ano correspondente, de acordo com
