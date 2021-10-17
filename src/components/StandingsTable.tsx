@@ -55,7 +55,7 @@ export const StandingsTable: React.FC<ComponentProps> = ({
                 {isLoading ? (
                     <Box className="loading-animation" />
                 ) : (
-                    standingTasks?.data.standings.map((element, index, array) => {
+                    standingTasks?.data!.standings.map((element, index, array) => {
                         return isLoading ? null : (
                             <StandingListItem
                                 iterationArray={array}
