@@ -76,6 +76,31 @@ export const Home: React.FC<Props> = () => {
     };
 
     /**
+     *
+     * Cálculo de data e retorna uma string.
+     *
+     * @param initialDate data inicial do seasonTasks.data.seasons da variavel season atual
+     * @param endDate data final do seasonTasks.data.seasons da variavel season atual
+     * @returns string (de [DIA_initial] de [MÊS_inicial] de [ANO_inicial]
+     * até [DIA_final] de [MÊS_final] de [ANO_final])
+     */
+    const parseDateString = (initialDate: string, endDate: string) => {
+        /**
+         * Pega as datas iniciais e finais da seasonTasks
+         */
+        let date1 = new Date(initialDate);
+        let date2 = new Date(endDate);
+
+        /**
+         * Localiza as datas para pt-BR no formato ([DIA] de [MÊS] de [ANO])
+         */
+        let date1String = date1.toLocaleDateString("pt-BR", { dateStyle: "long" });
+        let date2String = date2.toLocaleDateString("pt-BR", { dateStyle: "long" });
+
+        return `de ${date1String} até ${date2String}`;
+    };
+
+    /**
      * Realiza a execução de todos requests que a página necessita e mantém atualizado.
      */
     useEffect(() => {
@@ -167,11 +192,28 @@ export const Home: React.FC<Props> = () => {
                         "Carregando informações da liga..."
                     ) : (
                         <Box className="title-box">
-                            <span className="league-name-prefix">Classificações da liga </span>
-                            <span className="league-bigname">{standingTasks?.data!.name}</span>{" "}
-                            <span className="league-bigname"> - {season}</span>{" "}
-                            <span className="league-title-abbr">
-                                {standingTasks?.data!.abbreviation}
+                            <Box>
+                                <span className="league-name-prefix">Classificações da liga </span>
+                                <span className="league-bigname">
+                                    {standingTasks?.data!.name} - {season}
+                                </span>{" "}
+                                <span className="league-title-abbr">
+                                    {standingTasks?.data!.abbreviation}
+                                </span>
+                            </Box>
+                            <span className="date-lenght">
+                                {/**
+                                 * Encontra a data da tab atual dentro do seasonTasks.data.seasons
+                                 * e pega o seu startDate e endDate
+                                 */}
+                                {parseDateString(
+                                    seasonTasks?.data?.seasons.find(
+                                        (data) => parseInt(data.year) === season
+                                    )!?.startDate,
+                                    seasonTasks?.data?.seasons.find(
+                                        (data) => parseInt(data.year) === season
+                                    )!?.endDate
+                                )}
                             </span>
                         </Box>
                     )}
@@ -203,7 +245,7 @@ export const Home: React.FC<Props> = () => {
                         <TabPanel value={tabValue} className="main-tab-panel">
                             {/**
                              *
-                             *  Mostra as classificações do ano correspondente, de acordo com
+                             *   Mostra as classificações do ano correspondente, de acordo com
                              *   a tab atual.
                              *
                              *   @bug
