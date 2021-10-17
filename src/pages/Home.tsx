@@ -151,7 +151,15 @@ export const Home: React.FC<Props> = () => {
                 maxWidth="xl"
                 onClose={handleClose}
                 sx={mainDialogStyling}
-                PaperProps={{ sx: { borderRadius: "1.5em" } }}
+                PaperProps={{
+                    sx: {
+                        borderRadius: "1.5em",
+                        "@media (max-width: 500px)": {
+                            margin: 0,
+                            borderRadius: 0,
+                        },
+                    },
+                }}
             >
                 <DialogTitle className="dialog-window-title">
                     {loading ? (
