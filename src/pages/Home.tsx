@@ -1,14 +1,19 @@
+// Material UI
 import { Button, Dialog, DialogContent, DialogTitle, Paper, Tab, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
+// Components
+import { LeagueItem, StandingsTable } from "../components";
+// Styles
 import { mainHomeBoxStyling, mainDialogStyling } from "./styles";
-import React, { useEffect, useState } from "react";
-import { LeagueItem } from "../components";
+// Hooks
 import useLeagues from "../hooks/useLeagues";
 import useStanding from "../hooks/useStandings";
 import useSeasons from "../hooks/useSeasons";
-
-import StandingsTable from "../components/StandingsTable";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
+// Interfaces
+import { LeaguesData } from "../interfaces";
+// React
+import React, { useEffect, useState } from "react";
 
 interface Props {}
 export const Home: React.FC<Props> = () => {
@@ -84,6 +89,23 @@ export const Home: React.FC<Props> = () => {
     };
 
     /**
+     * Acionado quando clicado em algum item da lista de ligas.
+     * @param element LeaguesData
+     * @param index number
+     */
+    const handleLeagueItemClick = (element: LeaguesData, index: number) => {
+        setStandingKey(element.id);
+        setDialogOpen(true);
+
+        /**
+         * Verifica index duplicado, para não executar a animação de
+         * loading quando já existir algo carregado.
+         */
+        if (currentIndex !== index) setLoading(true);
+        setCurrentIndex(index);
+    };
+
+    /**
      *
      * Cálculo de data e retorna uma string.
      *
@@ -142,17 +164,7 @@ export const Home: React.FC<Props> = () => {
                                     <LeagueItem
                                         index={index}
                                         key={index}
-                                        onClick={() => {
-                                            setStandingKey(element.id);
-                                            setDialogOpen(true);
-
-                                            /**
-                                             * Verifica index duplicado, para não executar a animação de
-                                             * loading quando já existir algo carregado.
-                                             */
-                                            if (currentIndex !== index) setLoading(true);
-                                            setCurrentIndex(index);
-                                        }}
+                                        onClick={() => handleLeagueItemClick(element, index)}
                                         id={element.id}
                                         abbr={element.abbr}
                                         logos={element.logos}
@@ -168,9 +180,7 @@ export const Home: React.FC<Props> = () => {
                                         key={index}
                                         disableRipple
                                         sx={{ color: "#aaf" }}
-                                        onClick={() => {
-                                            setLoadedComponent(loadedComponent + 5);
-                                        }}
+                                        onClick={() => setLoadedComponent(loadedComponent + 5)}
                                     >
                                         Carregar mais...
                                     </Button>
