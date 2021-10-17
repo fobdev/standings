@@ -1,8 +1,11 @@
 // usado em [ENDPOINT] /leagues/
 
 export interface Leagues {
-    status: boolean;
-    data: LeaguesData[];
+    /**
+     * Podem retornar undefined por conta de ser um request assíncrono
+     */
+    status: boolean | undefined;
+    data: LeaguesData[] | undefined;
 }
 
 export interface LeaguesData {

@@ -1,4 +1,7 @@
 export interface Seasons {
+    /**
+     * Podem retornar undefined por conta de ser um request assíncrono
+     */
     status: boolean | undefined;
     data: SeasonsData | undefined;
 }

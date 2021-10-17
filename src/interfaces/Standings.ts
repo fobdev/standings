@@ -1,8 +1,11 @@
 // usado em [ENDPOINT] /leagues/{id}/standings
 
 export interface Standings {
-    status: boolean;
-    data: StandingsData;
+    /**
+     * Podem retornar undefined por conta de ser um request assíncrono
+     */
+    status: boolean | undefined;
+    data: StandingsData | undefined;
 }
 
 export interface StandingsData {
