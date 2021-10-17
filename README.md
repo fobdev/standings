@@ -1,6 +1,6 @@
 # standings-fetch
+basic application that make GET requests from a public API.<br>
 available at **https://standings-fetch.herokuapp.com/**
-basic application that make GET requests from a public API
 
 ### to-do list
  - [x] fetch the first endpoint from the backend API and display it on React with icon, abbr, name, button)
@@ -18,4 +18,3 @@ basic application that make GET requests from a public API
  2. material-ui
  3. typescript
  4. axios
- 5. API: **https://github.com/azharimm/football-standings-api**
