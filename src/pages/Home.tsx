@@ -185,6 +185,12 @@ export const Home: React.FC<Props> = () => {
                 maxWidth="xl"
                 onClose={handleClose}
                 sx={mainDialogStyling}
+                /**
+                 * CSS do Paper do Dialog explicitado aqui por conta de como funciona
+                 * o elemento.
+                 * Seguindo a documentação, o CSS do elemento Paper de dentro
+                 * do Dialog é manipulado por uma Prop do Dialog.
+                 */
                 PaperProps={{
                     sx: {
                         borderRadius: "1.5em",
