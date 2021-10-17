@@ -59,14 +59,13 @@ export const mainDialogStyling: SxProps<Theme> = {
                 ".league-name-prefix": {
                     display: "none",
                 },
+                ".league-bigname": {
+                    fontSize: "1em",
+                },
             },
         },
     },
     ".dialog-content": {
-        "@media (max-width: 800px)": {
-            padding: 0,
-            margin: 0,
-        },
         ".teams-table": {
             ".table-body": {
                 ".loading-animation": {
@@ -84,8 +83,6 @@ export const mainDialogStyling: SxProps<Theme> = {
                     },
                 },
             },
-            padding: 0,
-            margin: 0,
             "@media (max-width: 800px)": {
                 ".sg-count, .gp-count, .gc-count": {
                     display: "none",
@@ -138,6 +135,13 @@ export const mainDialogStyling: SxProps<Theme> = {
                         height: "1em",
                     },
                 },
+            },
+        },
+        "@media (max-width: 800px)": {
+            padding: 0,
+            margin: 0,
+            ".main-tab-panel": {
+                padding: 0,
             },
         },
     },
