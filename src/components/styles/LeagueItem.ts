@@ -12,6 +12,9 @@ export const mainButtonStyling: SxProps<Theme> = {
     border: "1px solid #ccf",
     borderRadius: "5em",
 
+    /**
+     * Efeitos de botão
+     */
     cursor: "pointer",
     userSelect: "none",
     ".title-box": {
