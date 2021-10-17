@@ -177,9 +177,6 @@ export const Home: React.FC<Props> = () => {
                     )}
                 </DialogTitle>
                 <DialogContent className="dialog-content">
-                    {/* Uma lista de tabs com no máximo 10 anos visíveis, clicar em um ano irá exibir
-                        as Classificações de times correspontendes ao ano.
-                    */}
                     <TabContext value={tabValue}>
                         <TabList
                             onChange={handleTabChange}
@@ -187,6 +184,10 @@ export const Home: React.FC<Props> = () => {
                             scrollButtons="auto"
                         >
                             {seasonTasks?.data?.seasons.map((value, index) => {
+                                /**
+                                 *  Uma lista de tabs com no máximo 10 tabs visíveis, clicar em um ano irá exibir
+                                 *  as Classificações de times correspontendes ao ano.
+                                 */
                                 if (index < 10) {
                                     return (
                                         <Tab
@@ -213,7 +214,16 @@ export const Home: React.FC<Props> = () => {
                              *       {"status":false,"data":"Error: TypeError: Cannot read property 'map' of undefined"}
                              *   um erro de JavaScript do próprio servidor.
                              *
-                             *   portanto, a tab de 2021 do ID chn.1 (Chinese Super League) recebe erro 500.
+                             *   Porém, quando se faz uma request direta do JSON no navegador na endpoint /seasons/
+                             *   o valor das ligas de 2021 é mostrado:
+                             *
+                             *           "year": 2021,
+                             *           "startDate": "2021-01-01T10:00Z",
+                             *           "endDate": "2022-01-01T04:59Z",
+                             *           "displayName": "2021 Chinese Super League",
+                             *           "types": [...
+                             *
+                             *   com isso, a tab de 2021 do ID chn.1 (Chinese Super League) recebe erro 500.
                              *
                              **/}
                             <StandingsTable
