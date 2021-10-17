@@ -73,6 +73,14 @@ export const Home: React.FC<Props> = () => {
      */
     const handleClose = () => {
         setDialogOpen(false);
+
+        /**
+         * Quando sair da tabela de ligas, reseta os valores para 2021.
+         * motivo: existem listas de tabs menores, que podem causar erros
+         * caso selecionadas se a anterior for de um valor que não existe na atual.
+         */
+        setTabValue("2021");
+        setSeason(2021);
     };
 
     /**
