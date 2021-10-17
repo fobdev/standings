@@ -5,6 +5,28 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     justifyContent: "center",
     alignItems: "center",
 
+    ".main-paper": {
+        borderRadius: "2em",
+        display: "flex",
+        flexDirection: "column",
+        padding: "2em 3vw",
+        margin: "4em 0",
+
+        ".leagues-list-paper": {
+            display: "inherit",
+            flexDirection: "column",
+            borderRadius: "2em",
+            justifySelf: "center",
+            paddingTop: "1em",
+            margin: "1em 0",
+            width: "100%",
+        },
+
+        "@media (max-width: 530px)": {
+            borderRadius: 0,
+        },
+    },
+
     ".loading-animation": {
         border: "8px solid #f3f3f3",
         borderRadius: "50%",
@@ -17,29 +39,6 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
         "@keyframes spin": {
             "0%": { transform: "rotate(0deg)" },
             "100%": { transform: "rotate(360deg)" },
-        },
-    },
-
-    ".main-paper": {
-        borderRadius: "2em",
-        display: "flex",
-        flexDirection: "column",
-        padding: "2em 3vw",
-
-        margin: "4em 0",
-
-        ".leagues-list-paper": {
-            display: "inherit",
-            flexDirection: "column",
-            justifySelf: "center",
-            borderRadius: "2em",
-            width: "100%",
-            paddingTop: "1em",
-            margin: "1em 0",
-        },
-
-        "@media (max-width: 530px)": {
-            borderRadius: 0,
         },
     },
 };
@@ -64,6 +63,10 @@ export const mainDialogStyling: SxProps<Theme> = {
         },
     },
     ".dialog-content": {
+        "@media (max-width: 800px)": {
+            padding: 0,
+            margin: 0,
+        },
         ".teams-table": {
             ".table-body": {
                 ".loading-animation": {
@@ -81,6 +84,8 @@ export const mainDialogStyling: SxProps<Theme> = {
                     },
                 },
             },
+            padding: 0,
+            margin: 0,
             "@media (max-width: 800px)": {
                 ".sg-count, .gp-count, .gc-count": {
                     display: "none",
