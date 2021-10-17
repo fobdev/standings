@@ -103,7 +103,7 @@ export const Home: React.FC<Props> = () => {
                     {leaguesLoading ? (
                         <Box className="loading-animation" />
                     ) : (
-                        leaguesTasks?.data.map((element, index) => {
+                        leaguesTasks?.data!.map((element, index) => {
                             if (index < loadedComponent) {
                                 return (
                                     <LeagueItem
@@ -159,10 +159,10 @@ export const Home: React.FC<Props> = () => {
                     ) : (
                         <Box className="title-box">
                             <span className="league-name-prefix">Classificações da liga </span>
-                            <span className="league-bigname">{standingTasks?.data.name}</span>{" "}
+                            <span className="league-bigname">{standingTasks?.data!.name}</span>{" "}
                             <span className="league-bigname"> - {season}</span>{" "}
                             <span className="league-title-abbr">
-                                {standingTasks?.data.abbreviation}
+                                {standingTasks?.data!.abbreviation}
                             </span>
                         </Box>
                     )}
