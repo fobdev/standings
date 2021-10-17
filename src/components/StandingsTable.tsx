@@ -53,7 +53,11 @@ export const StandingsTable: React.FC<ComponentProps> = ({
             <TableBody className="table-body">
                 {/* Animação de loading enquanto os fetchs estão sendo realizados */}
                 {isLoading ? (
-                    <Box className="loading-animation" />
+                    <TableRow>
+                        <TableCell>
+                            <Box className="loading-animation" />
+                        </TableCell>
+                    </TableRow>
                 ) : (
                     standingTasks?.data!.standings.map((element, index, array) => {
                         /**
