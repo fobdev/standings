@@ -201,9 +201,16 @@ export const Home: React.FC<Props> = () => {
                     ) : (
                         <Box className="title-box">
                             <Box>
-                                <span className="league-name-prefix">Classificações da liga </span>
+                                <span className="league-name-prefix">Classificações de: </span>
                                 <span className="league-bigname">
-                                    {standingTasks?.data!.name} - {season}
+                                    {/**
+                                     * Mostra o nome da season correspondente a tab atual
+                                     */}
+                                    {
+                                        seasonTasks?.data?.seasons.find(
+                                            (data) => parseInt(data.year) === season
+                                        )?.displayName
+                                    }
                                 </span>{" "}
                                 <span className="league-title-abbr">
                                     {standingTasks?.data!.abbreviation}
