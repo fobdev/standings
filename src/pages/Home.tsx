@@ -181,6 +181,22 @@ export const Home: React.FC<Props> = () => {
                             })}
                         </TabList>
                         <TabPanel value={tabValue}>
+                            {/**
+                             *
+                             *  Mostra as classificações do ano correspondente, de acordo com
+                             *   a tab atual.
+                             *
+                             *   @bug
+                             *   Aviso: foi encontrado um bug server-side no endpoint:
+                             *       https://api-football-standings.azharimm.site/leagues/chn.1/standings?season=2021
+                             *
+                             *   onde retorna:
+                             *       {"status":false,"data":"Error: TypeError: Cannot read property 'map' of undefined"}
+                             *   um erro de JavaScript do próprio servidor.
+                             *
+                             *   portanto, a tab de 2021 do ID chn.1 (Chinese Super League) recebe erro 500.
+                             *
+                             **/}
                             <StandingsTable
                                 data={seasonTasks?.data}
                                 status={seasonTasks?.status}
