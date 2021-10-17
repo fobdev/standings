@@ -5,6 +5,9 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
     justifyContent: "center",
     alignItems: "center",
 
+    /**
+     * Component que contém o título de cima (Classificações, escolha uma liga...)
+     */
     ".main-paper": {
         borderRadius: "2em",
         display: "flex",
@@ -12,6 +15,9 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
         padding: "2em 3vw",
         margin: "4em 0",
 
+        /**
+         * Component da lista de times, o que fica dentro do componente principal.
+         */
         ".leagues-list-paper": {
             display: "inherit",
             flexDirection: "column",
@@ -22,11 +28,17 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
             width: "100%",
         },
 
+        /**
+         * Remove bordas caso a tela for menor, para ter a impressao de um background
+         */
         "@media (max-width: 530px)": {
             borderRadius: 0,
         },
     },
 
+    /**
+     * Animação de loading, durante o fetching de ligas.
+     */
     ".loading-animation": {
         border: "8px solid #f3f3f3",
         borderRadius: "50%",
@@ -46,6 +58,8 @@ export const mainHomeBoxStyling: SxProps<Theme> = {
 export const mainDialogStyling: SxProps<Theme> = {
     ".dialog-window-title": {
         ".title-box": {
+            display: "flex",
+            flexDirection: "column",
             ".league-bigname": {
                 fontSize: "1.4em",
             },
@@ -54,7 +68,10 @@ export const mainDialogStyling: SxProps<Theme> = {
                 fontWeight: 300,
                 color: "#bbb",
             },
-
+            ".date-lenght": {
+                fontSize: ".8em",
+                fontWeight: 300,
+            },
             "@media (max-width: 700px)": {
                 ".league-name-prefix": {
                     display: "none",
