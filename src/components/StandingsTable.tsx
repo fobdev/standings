@@ -56,6 +56,21 @@ export const StandingsTable: React.FC<ComponentProps> = ({
                     <Box className="loading-animation" />
                 ) : (
                     standingTasks?.data!.standings.map((element, index, array) => {
+                        /**
+                         * Alguns objetos não estao recebendo o valor de {element.note}
+                         * portanto, o conteúdo desse objeto está fora do output.
+                         *
+                         * o check abaixo, se retirado o comment, mostra quais times contém
+                         * uma cor dentro da API, e quais times não tem.
+                         */
+
+                        // if (element.note)
+                        //     console.log(`${element.team.name} color: ${element.note.color}`);
+                        // else console.log(` --- no note data for ${element.team.name}`);
+
+                        /**
+                         * Exibe todos os times liga correspondente a tab selecionada.
+                         */
                         return isLoading ? null : (
                             <StandingListItem
                                 iterationArray={array}
