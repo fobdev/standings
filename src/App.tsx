@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { Typography } from "@mui/material";
+import { BackToTop } from "./components";
 
 // import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
                     </Typography>
                 </Route>
             </Switch>
+            <BackToTop />
         </Router>
     );
 }
