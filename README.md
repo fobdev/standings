@@ -1,6 +1,8 @@
-# standings-fetch
+# standings
 basic application that make GET requests from a public API.<br>
 available at **https://standings-fetch.herokuapp.com/**
+
+### [React Native Project](https://github.com/fobdev/reactnative-standings)
 
 ### to-do list
  - [x] fetch the first endpoint from the backend API and display it on React with icon, abbr, name, button)
